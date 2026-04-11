@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabian's 40. Geburtstag</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Righteous&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #ff2d95;
+            --neon-blue: #00d4ff;
+            --neon-purple: #b537f2;
+            --neon-yellow: #ffe156;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a2e;
+            --card-bg: rgba(20, 20, 60, 0.85);
+            --text-light: #f0e6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Retro grid background */
+        .retro-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background:
+                linear-gradient(180deg, #0a0a2e 0%, #1a0a3e 50%, #2d1b69 100%);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 45, 149, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 45, 149, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(0deg); }
+            100% { transform: perspective(500px) rotateX(2deg); }
+        }
+
+        /* Floating shapes */
+        .shapes-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: var(--neon-pink);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 30%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation-delay: -3s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            background: var(--neon-purple);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            animation-delay: -7s;
+        }
+
+        .shape:nth-child(4) {
+            top: 60%;
+            right: 20%;
+            width: 50px;
+            height: 50px;
+            background: var(--neon-yellow);
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(5) {
+            top: 80%;
+            left: 50%;
+            width: 70px;
+            height: 70px;
+            background: var(--neon-green);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(15px) rotate(240deg); }
+        }
+
+        /* Language toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            display: flex;
+            gap: 4px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 45, 149, 0.3);
+            border-radius: 25px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 45, 149, 0.4);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(255, 45, 149, 0.2);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(28px, 7vw, 56px);
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            text-shadow: none;
+            filter: drop-shadow(0 0 30px rgba(255, 45, 149, 0.3));
+        }
+
+        .hero-subtitle {
+            font-family: 'Righteous', cursive;
+            font-size: clamp(18px, 4vw, 28px);
+            color: var(--neon-yellow);
+            margin-bottom: 8px;
+        }
+
+        .hero-date {
+            font-family: 'Righteous', cursive;
+            font-size: clamp(22px, 5vw, 36px);
+            color: var(--neon-blue);
+            margin-bottom: 6px;
+        }
+
+        .hero-time {
+            font-size: 20px;
+            color: var(--neon-green);
+            font-weight: 700;
+        }
+
+        .hero-emoji {
+            font-size: 48px;
+            margin: 20px 0;
+            display: block;
+        }
+
+        /* Neon divider */
+        .neon-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-blue), var(--neon-purple), transparent);
+            margin: 30px 0;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 45, 149, 0.15);
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 45, 149, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 45, 149, 0.1);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .card h2 {
+            font-family: 'Righteous', cursive;
+            font-size: 22px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card p, .card li {
+            color: rgba(240, 230, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            top: 12px;
+        }
+
+        .card strong {
+            color: var(--neon-yellow);
+        }
+
+        /* Map section */
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 16px 0;
+            border: 2px solid rgba(255, 45, 149, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .directions-btn, .rsvp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-top: 12px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .directions-btn:hover, .rsvp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 45, 149, 0.5);
+        }
+
+        /* Countdown */
+        .countdown-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px 12px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(20px, 5vw, 32px);
+            color: var(--neon-blue);
+            display: block;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            color: rgba(240, 230, 255, 0.6);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .rsvp-section .card {
+            border-color: rgba(57, 255, 20, 0.3);
+        }
+
+        .rsvp-phone {
+            font-family: 'Righteous', cursive;
+            font-size: 24px;
+            color: var(--neon-green);
+            margin: 12px 0;
+            word-break: break-all;
+        }
+
+        .rsvp-deadline {
+            color: var(--neon-yellow);
+            font-weight: 700;
+        }
+
+        /* Collapsible sections */
+        .collapsible-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: inherit;
+            text-align: left;
+        }
+
+        .collapsible-toggle .card-header {
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .toggle-arrow {
+            font-size: 20px;
+            color: var(--neon-pink);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .collapsible-toggle[aria-expanded="true"] .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .collapsible-content.open {
+            max-height: 2000px;
+        }
+
+        .collapsible-inner {
+            padding-top: 18px;
+        }
+
+        /* Hotel cards */
+        .hotel-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--neon-pink);
+        }
+
+        .hotel-item h3 {
+            font-size: 16px;
+            color: var(--neon-blue);
+            margin-bottom: 4px;
+        }
+
+        .hotel-item p {
+            font-size: 14px;
+            margin: 2px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: rgba(240, 230, 255, 0.3);
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px 12px 30px;
+            }
+
+            .hero {
+                padding: 50px 12px 30px;
+            }
+
+            .card {
+                padding: 20px 16px;
+            }
+
+            .countdown-item {
+                min-width: 65px;
+                padding: 12px 8px;
+            }
+
+            .map-container iframe {
+                height: 220px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-pink);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scanline effect */
+        .scanlines::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+        }
+    </style>
+</head>
+<body class="scanlines">
+    <div class="retro-bg"></div>
+    <div class="grid-overlay"></div>
+    <div class="shapes-container">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="hero fade-in">
+            <div class="hero-badge" data-de="Einladung" data-en="Invitation">Einladung</div>
+            <span class="hero-emoji">&#127880;&#127926;&#128190;</span>
+            <h1>40</h1>
+            <p class="hero-subtitle" data-de="Fabian's Geburtstag" data-en="Fabian's Birthday">Fabian's Geburtstag</p>
+            <p class="hero-date">12. September 2026</p>
+            <p class="hero-time" data-de="Ab 17:00 Uhr" data-en="From 5:00 PM">Ab 17:00 Uhr</p>
+        </section>
+
+        <div class="neon-divider"></div>
+
+        <!-- Countdown -->
+        <section class="countdown-section fade-in">
+            <h2 style="font-family: 'Righteous', cursive; font-size: 22px; color: var(--neon-yellow);" data-de="Countdown zum Fest" data-en="Countdown to the Party">Countdown zum Fest</h2>
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="cd-days">---</span>
+                    <span class="countdown-label" data-de="Tage" data-en="Days">Tage</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="cd-hours">--</span>
+                    <span class="countdown-label" data-de="Stunden" data-en="Hours">Stunden</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="cd-mins">--</span>
+                    <span class="countdown-label" data-de="Minuten" data-en="Minutes">Minuten</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="cd-secs">--</span>
+                    <span class="countdown-label" data-de="Sekunden" data-en="Seconds">Sekunden</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="neon-divider"></div>
+
+        <!-- Venue -->
+        <section class="card fade-in">
+            <div class="card-header">
+                <div class="card-icon">&#128205;</div>
+                <h2 data-de="Die Location" data-en="The Venue">Die Location</h2>
+            </div>
+            <p style="font-size: 18px; font-weight: 700; color: var(--neon-yellow); margin-bottom: 4px;">Musikerheim Kirchehrenbach</p>
+            <p style="margin-bottom: 14px;">Sportplatzstra&szlig;e 17, 91356 Kirchehrenbach, Deutschland</p>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2551.5!2d11.16243660185096!3d49.7359826024882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1a3c5c5c5c5c5%3A0x0!2sSportplatzstra%C3%9Fe+17%2C+91356+Kirchehrenbach!5e0!3m2!1sde!2sde!4v1"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Musikerheim Kirchehrenbach">
+                </iframe>
+            </div>
+            <a class="directions-btn"
+               href="https://www.google.com/maps/dir/?api=1&destination=49.7359826024882,11.16243660185096&travelmode=driving"
+               target="_blank"
+               rel="noopener noreferrer">
+                &#128663;
+                <span data-de="Route anzeigen" data-en="Get Directions">Route anzeigen</span>
+            </a>
+        </section>
+
+        <!-- Hotels -->
+        <section class="card fade-in">
+            <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
+                <div class="card-header">
+                    <div class="card-icon">&#127976;</div>
+                    <h2 data-de="Hoteltipps in der N&auml;he" data-en="Hotel Tips Nearby">Hoteltipps in der N&auml;he</h2>
+                </div>
+                <span class="toggle-arrow">&#9660;</span>
+            </button>
+            <div class="collapsible-content">
+                <div class="collapsible-inner">
+                    <div class="hotel-item">
+                        <h3>Brauerei-Gasthof Sponsel</h3>
+                        <p data-de="Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof mit regionaler K&uuml;che." data-en="Kirchehrenbach &ndash; Right in town, cozy Franconian inn with regional cuisine.">Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof mit regionaler K&uuml;che.</p>
+                        <p style="color: var(--neon-green); font-size: 13px;">&#127861; ca. 5 Min. zu Fu&szlig;</p>
+                    </div>
+                    <div class="hotel-item">
+                        <h3>Hotel & Gasthof Drei Linden</h3>
+                        <p data-de="Pretzfeld &ndash; Sch&ouml;nes Landhotel nur wenige Kilometer entfernt." data-en="Pretzfeld &ndash; Beautiful country hotel just a few kilometers away.">Pretzfeld &ndash; Sch&ouml;nes Landhotel nur wenige Kilometer entfernt.</p>
+                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 5 Min.</p>
+                    </div>
+                    <div class="hotel-item">
+                        <h3>Hotel-Gasthof Resengörg</h3>
+                        <p data-de="Ebermannstadt &ndash; Tradition und Komfort in der Fr&auml;nkischen Schweiz." data-en="Ebermannstadt &ndash; Tradition and comfort in Franconian Switzerland.">Ebermannstadt &ndash; Tradition und Komfort in der Fr&auml;nkischen Schweiz.</p>
+                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 8 Min.</p>
+                    </div>
+                    <div class="hotel-item">
+                        <h3>Hotel Feiler</h3>
+                        <p data-de="Wiesenthau &ndash; Modernes Hotel am Fu&szlig;e der Ehrenburg." data-en="Wiesenthau &ndash; Modern hotel at the foot of Ehrenburg castle.">Wiesenthau &ndash; Modernes Hotel am Fu&szlig;e der Ehrenburg.</p>
+                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 6 Min.</p>
+                    </div>
+                    <div class="hotel-item">
+                        <h3>Pension Sonnenhof</h3>
+                        <p data-de="Leutenbach &ndash; Ruhige Pension mit sch&ouml;ner Aussicht, familienfreundlich." data-en="Leutenbach &ndash; Quiet guesthouse with beautiful views, family-friendly.">Leutenbach &ndash; Ruhige Pension mit sch&ouml;ner Aussicht, familienfreundlich.</p>
+                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 7 Min.</p>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 14px; color: rgba(240,230,255,0.5);" data-de="Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz." data-en="Tip: Book early! September is peak season in Franconian Switzerland.">Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kids Activities -->
+        <section class="card fade-in">
+            <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
+                <div class="card-header">
+                    <div class="card-icon">&#127922;</div>
+                    <h2 data-de="Kinderaktivit&auml;ten in der N&auml;he" data-en="Kids Activities Nearby">Kinderaktivit&auml;ten in der N&auml;he</h2>
+                </div>
+                <span class="toggle-arrow">&#9660;</span>
+            </button>
+            <div class="collapsible-content">
+                <div class="collapsible-inner">
+                    <ul>
+                        <li>
+                            <strong data-de="Burg Feuerstein &ndash; Abenteuerspielplatz" data-en="Burg Feuerstein &ndash; Adventure Playground">Burg Feuerstein &ndash; Abenteuerspielplatz</strong><br>
+                            <span data-de="Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt." data-en="Large playground with climbing castle and nature experience. About 10 min. away.">Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Fossilien klopfen in Ebermannstadt" data-en="Fossil Hunting in Ebermannstadt">Fossilien klopfen in Ebermannstadt</strong><br>
+                            <span data-de="Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 8 Min." data-en="Kids can uncover real Jurassic fossils! About 8 min. away.">Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 8 Min.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Sommerrodelbahn Pottenstein" data-en="Summer Toboggan Run Pottenstein">Sommerrodelbahn Pottenstein</strong><br>
+                            <span data-de="Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min." data-en="Thrilling toboggan ride for the whole family. About 20 min. away.">Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Teufelsh&ouml;hle Pottenstein" data-en="Devil's Cave Pottenstein">Teufelsh&ouml;hle Pottenstein</strong><br>
+                            <span data-de="Beeindruckende Troph&auml;nstenh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min." data-en="Impressive stalactite cave &ndash; exciting for little explorers. About 20 min.">Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Kanu fahren auf der Wiesent" data-en="Canoeing on the Wiesent River">Kanu fahren auf der Wiesent</strong><br>
+                            <span data-de="Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he." data-en="Relaxed canoe tour through Franconian Switzerland. Various entry points nearby.">Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 80s Party -->
+        <section class="card fade-in">
+            <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
+                <div class="card-header">
+                    <div class="card-icon">&#127911;</div>
+                    <h2 data-de="80er Jahre Party &ndash; Was erwartet dich?" data-en="80s Party &ndash; What to Expect?">80er Jahre Party &ndash; Was erwartet dich?</h2>
+                </div>
+                <span class="toggle-arrow">&#9660;</span>
+            </button>
+            <div class="collapsible-content">
+                <div class="collapsible-inner">
+                    <p data-de="Mach dich bereit f&uuml;r eine Zeitreise zur&uuml;ck in die 80er! Hier ist, was dich erwartet und wie du dich einbringen kannst:" data-en="Get ready for a time trip back to the 80s! Here's what to expect and how to get involved:">Mach dich bereit f&uuml;r eine Zeitreise zur&uuml;ck in die 80er! Hier ist, was dich erwartet und wie du dich einbringen kannst:</p>
+                    <ul>
+                        <li>
+                            <strong data-de="Musik" data-en="Music">Musik</strong><br>
+                            <span data-de="Von Depeche Mode &uuml;ber Nena bis Michael Jackson &ndash; die gr&ouml;&szlig;ten Hits der 80er laufen den ganzen Abend. Bringe gerne deine Lieblings-80er-Playlist mit!" data-en="From Depeche Mode to Nena to Michael Jackson &ndash; the greatest 80s hits all evening. Feel free to bring your favorite 80s playlist!">Von Depeche Mode &uuml;ber Nena bis Michael Jackson &ndash; die gr&ouml;&szlig;ten Hits der 80er laufen den ganzen Abend. Bringe gerne deine Lieblings-80er-Playlist mit!</span>
+                        </li>
+                        <li>
+                            <strong data-de="Dresscode" data-en="Dress Code">Dresscode</strong><br>
+                            <span data-de="Schulterpolster, Neonfarben, Stirnb&auml;nder, Leggins, Vokuhila-Per&uuml;cke &ndash; je ausgefallener, desto besser! Aber kein Muss, komm wie du m&ouml;chtest." data-en="Shoulder pads, neon colors, headbands, leggings, mullet wig &ndash; the more outrageous, the better! But no pressure, come as you like.">Schulterpolster, Neonfarben, Stirnb&auml;nder, Leggins, Vokuhila-Per&uuml;cke &ndash; je ausgefallener, desto besser! Aber kein Muss, komm wie du m&ouml;chtest.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Deko & Vibes" data-en="Decor & Vibes">Deko & Vibes</strong><br>
+                            <span data-de="Neonlichter, Disco-Kugel, Retro-Poster und jede Menge 80er-Flair. Du wirst dich f&uuml;hlen wie in einem Musikvideo!" data-en="Neon lights, disco ball, retro posters and tons of 80s flair. You'll feel like you're in a music video!">Neonlichter, Disco-Kugel, Retro-Poster und jede Menge 80er-Flair. Du wirst dich f&uuml;hlen wie in einem Musikvideo!</span>
+                        </li>
+                        <li>
+                            <strong data-de="Mitmachen" data-en="Get Involved">Mitmachen</strong><br>
+                            <span data-de="80er-Quiz, Lip-Sync-Battle, Tanzeinlagen &ndash; zeig dein Talent! Und nat&uuml;rlich die Fotoecke mit 80er-Requisiten f&uuml;r unvergessliche Erinnerungsfotos." data-en="80s quiz, lip-sync battle, dance-offs &ndash; show your talent! And of course the photo corner with 80s props for unforgettable memories.">80er-Quiz, Lip-Sync-Battle, Tanzeinlagen &ndash; zeig dein Talent! Und nat&uuml;rlich die Fotoecke mit 80er-Requisiten f&uuml;r unvergessliche Erinnerungsfotos.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- What happened on 06.10.1986 -->
+        <section class="card fade-in">
+            <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
+                <div class="card-header">
+                    <div class="card-icon">&#128240;</div>
+                    <h2 data-de="Was geschah am 06.10.1986?" data-en="What Happened on Oct 6, 1986?">Was geschah am 06.10.1986?</h2>
+                </div>
+                <span class="toggle-arrow">&#9660;</span>
+            </button>
+            <div class="collapsible-content">
+                <div class="collapsible-inner">
+                    <p style="margin-bottom: 14px; color: rgba(240,230,255,0.6); font-style: italic;" data-de="Der Tag, an dem Fabian das Licht der Welt erblickte &ndash; und das passierte sonst noch:" data-en="The day Fabian was born &ndash; and here's what else was going on:">Der Tag, an dem Fabian das Licht der Welt erblickte &ndash; und das passierte sonst noch:</p>
+                    <ul>
+                        <li>
+                            <strong data-de="Mordechai Vanunu enth&uuml;llt Israels Atomprogramm" data-en="Mordechai Vanunu Reveals Israel's Nuclear Program">Mordechai Vanunu enth&uuml;llt Israels Atomprogramm</strong><br>
+                            <span data-de="Die britische Sunday Times ver&ouml;ffentlicht die Enth&uuml;llungen des israelischen Atomtechnikers Mordechai Vanunu &uuml;ber das geheime Atomwaffenprogramm Israels &ndash; eine Weltsensation." data-en="The British Sunday Times publishes revelations from Israeli nuclear technician Mordechai Vanunu about Israel's secret nuclear weapons program &ndash; a world sensation.">Die britische Sunday Times ver&ouml;ffentlicht die Enth&uuml;llungen des israelischen Atomtechnikers Mordechai Vanunu &uuml;ber das geheime Atomwaffenprogramm Israels &ndash; eine Weltsensation.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Goldener Oktober in Deutschland" data-en="Golden October in Germany">Goldener Oktober in Deutschland</strong><br>
+                            <span data-de="Deutschland erlebt einen pr&auml;chtigen Altweibersommer. Die Wirtschaft brummt unter Kanzler Kohl, die Wiedervereinigung ist noch 3 Jahre entfernt." data-en="Germany enjoys a magnificent Indian summer. The economy is booming under Chancellor Kohl, reunification is still 3 years away.">Deutschland erlebt einen pr&auml;chtigen Altweibersommer. Die Wirtschaft brummt unter Kanzler Kohl, die Wiedervereinigung ist noch 3 Jahre entfernt.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Reykjavik-Gipfel steht bevor" data-en="Reykjavik Summit Approaching">Reykjavik-Gipfel steht bevor</strong><br>
+                            <span data-de="Die Welt blickt nach Island: In wenigen Tagen treffen sich Reagan und Gorbatschow zum historischen Gipfel in Reykjavik &uuml;ber nukle&auml;re Abr&uuml;stung." data-en="The world looks to Iceland: In just days, Reagan and Gorbachev will meet for the historic Reykjavik summit on nuclear disarmament.">Die Welt blickt nach Island: In wenigen Tagen treffen sich Reagan und Gorbatschow zum historischen Gipfel in Reykjavik &uuml;ber nukle&auml;re Abr&uuml;stung.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Nr. 1 Hit: &bdquo;Don't Forget Me (When I'm Gone)&ldquo; &ndash; Glass Tiger" data-en="No. 1 Hit: 'Don't Forget Me (When I'm Gone)' &ndash; Glass Tiger">Nr. 1 Hit: &bdquo;Don't Forget Me (When I'm Gone)&ldquo; &ndash; Glass Tiger</strong><br>
+                            <span data-de="In den deutschen Charts dominiert der Synthie-Pop. Passend zu einem echten 80er-Baby!" data-en="Synth-pop dominates the German charts. Fitting for a true 80s baby!">In den deutschen Charts dominiert der Synthie-Pop. Passend zu einem echten 80er-Baby!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="neon-divider"></div>
+
+        <!-- RSVP -->
+        <section class="rsvp-section fade-in">
+            <div class="card">
+                <div class="card-header" style="justify-content: center;">
+                    <div class="card-icon">&#128233;</div>
+                    <h2 data-de="R&uuml;ckmeldung" data-en="RSVP">R&uuml;ckmeldung</h2>
+                </div>
+                <p data-de="Bitte melde dich bis zum" data-en="Please respond by">Bitte melde dich bis zum</p>
+                <p class="rsvp-deadline">31. Mai 2026</p>
+                <p data-de="bei Fabian:" data-en="to Fabian:">bei Fabian:</p>
+                <p class="rsvp-phone">
+                    <a href="tel:+41793049385" style="color: var(--neon-green); text-decoration: none;">+41 79 304 93 85</a>
+                </p>
+                <a class="rsvp-btn" href="https://wa.me/41793049385" target="_blank" rel="noopener noreferrer">
+                    &#128172;
+                    <span data-de="WhatsApp schreiben" data-en="Send WhatsApp">WhatsApp schreiben</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Made with &#10084;&#65039; for Fabian's 40th &ndash; 2026</p>
+    </footer>
+
+    <script>
+        // Language toggle
+        let currentLang = 'de';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            document.querySelectorAll('[data-de]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+
+            document.title = lang === 'de'
+                ? "Fabian's 40. Geburtstag"
+                : "Fabian's 40th Birthday";
+        }
+
+        // Collapsible sections
+        function toggleSection(btn) {
+            const content = btn.nextElementSibling;
+            const isOpen = content.classList.contains('open');
+            content.classList.toggle('open');
+            btn.setAttribute('aria-expanded', !isOpen);
+        }
+
+        // Countdown
+        function updateCountdown() {
+            const partyDate = new Date('2026-09-12T17:00:00+02:00');
+            const now = new Date();
+            const diff = partyDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '0';
+                document.getElementById('cd-hours').textContent = '0';
+                document.getElementById('cd-mins').textContent = '0';
+                document.getElementById('cd-secs').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = days;
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
