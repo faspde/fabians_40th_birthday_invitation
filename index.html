@@ -9,14 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Righteous&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-pink: #ff2d95;
-            --neon-blue: #00d4ff;
-            --neon-purple: #b537f2;
-            --neon-yellow: #ffe156;
-            --neon-green: #39ff14;
-            --dark-bg: #0a0a2e;
-            --card-bg: rgba(20, 20, 60, 0.85);
-            --text-light: #f0e6ff;
+            --neon-pink: #ff5cb8;
+            --neon-blue: #42e8ff;
+            --neon-purple: #c96dff;
+            --neon-yellow: #ffe873;
+            --neon-green: #5dff5d;
+            --neon-orange: #ffaa42;
+            --dark-bg: #1a1040;
+            --card-bg: rgba(40, 25, 80, 0.75);
+            --text-light: #f5f0ff;
         }
 
         * {
@@ -42,7 +43,7 @@
             height: 100%;
             z-index: -2;
             background:
-                linear-gradient(180deg, #0a0a2e 0%, #1a0a3e 50%, #2d1b69 100%);
+                linear-gradient(180deg, #1a1050 0%, #2d1570 30%, #4a2080 60%, #2d1570 100%);
         }
 
         .grid-overlay {
@@ -53,15 +54,15 @@
             height: 100%;
             z-index: -1;
             background-image:
-                linear-gradient(rgba(255, 45, 149, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 45, 149, 0.07) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
+                linear-gradient(rgba(255, 92, 184, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(66, 232, 255, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 12s ease-in-out infinite alternate;
         }
 
         @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(0deg); }
-            100% { transform: perspective(500px) rotateX(2deg); }
+            0% { transform: perspective(400px) rotateX(0deg) scale(1); }
+            100% { transform: perspective(400px) rotateX(3deg) scale(1.05); }
         }
 
         /* Floating shapes */
@@ -78,63 +79,81 @@
 
         .shape {
             position: absolute;
-            opacity: 0.08;
-            animation: float 15s ease-in-out infinite;
+            opacity: 0.25;
+            filter: blur(1px);
         }
 
         .shape:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            width: 80px;
-            height: 80px;
+            top: 8%;
+            left: 3%;
+            width: 100px;
+            height: 100px;
             background: var(--neon-pink);
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-            animation-delay: 0s;
+            animation: floatA 10s ease-in-out infinite;
         }
 
         .shape:nth-child(2) {
-            top: 30%;
-            right: 10%;
-            width: 60px;
-            height: 60px;
+            top: 25%;
+            right: 5%;
+            width: 80px;
+            height: 80px;
             background: var(--neon-blue);
             border-radius: 50%;
-            animation-delay: -3s;
+            animation: floatB 8s ease-in-out infinite;
         }
 
         .shape:nth-child(3) {
-            bottom: 20%;
-            left: 15%;
-            width: 100px;
-            height: 100px;
+            top: 50%;
+            left: 8%;
+            width: 120px;
+            height: 120px;
             background: var(--neon-purple);
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            animation-delay: -7s;
+            animation: floatC 12s ease-in-out infinite;
         }
 
         .shape:nth-child(4) {
-            top: 60%;
-            right: 20%;
-            width: 50px;
-            height: 50px;
+            top: 65%;
+            right: 12%;
+            width: 70px;
+            height: 70px;
             background: var(--neon-yellow);
-            animation-delay: -5s;
+            border-radius: 8px;
+            animation: floatD 9s ease-in-out infinite;
         }
 
         .shape:nth-child(5) {
-            top: 80%;
-            left: 50%;
-            width: 70px;
-            height: 70px;
+            top: 85%;
+            left: 40%;
+            width: 90px;
+            height: 90px;
             background: var(--neon-green);
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            animation-delay: -10s;
+            animation: floatE 11s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(15px) rotate(240deg); }
+        @keyframes floatA {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-40px) rotate(180deg) scale(1.15); }
+        }
+        @keyframes floatB {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-20px, -30px) scale(1.2); }
+            75% { transform: translate(20px, 20px) scale(0.9); }
+        }
+        @keyframes floatC {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(30px) rotate(90deg); }
+        }
+        @keyframes floatD {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-25px, -20px) rotate(45deg); }
+            66% { transform: translate(15px, 25px) rotate(-30deg); }
+        }
+        @keyframes floatE {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-35px) rotate(144deg) scale(1.1); }
         }
 
         /* Language toggle */
@@ -242,8 +261,8 @@
 
         /* Neon divider */
         .neon-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-blue), var(--neon-purple), transparent);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-yellow), var(--neon-blue), var(--neon-purple), transparent);
             margin: 30px 0;
             border-radius: 2px;
         }
@@ -293,7 +312,7 @@
         }
 
         .card p, .card li {
-            color: rgba(240, 230, 255, 0.85);
+            color: rgba(245, 240, 255, 0.9);
             line-height: 1.7;
         }
 
@@ -622,42 +641,52 @@
             </a>
         </section>
 
-        <!-- Hotels -->
+        <!-- Hotels Forchheim - prominent -->
+        <section class="card fade-in" style="border-color: rgba(255, 170, 66, 0.3);">
+            <div class="card-header">
+                <div class="card-icon">&#127961;</div>
+                <h2 data-de="Hotels in Forchheim" data-en="Hotels in Forchheim">Hotels in Forchheim</h2>
+            </div>
+            <p style="margin-bottom: 14px; color: rgba(245,240,255,0.7);" data-de="Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:" data-en="Only about 10 minutes away &ndash; the biggest selection of hotels nearby:">Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:</p>
+            <div class="hotel-item" style="border-left-color: var(--neon-orange);">
+                <h3><a href="https://www.stadtvilla-forchheim.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Stadt Villa Boutiquehotel &#8599;</a></h3>
+                <p data-de="Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer." data-en="Charming boutique hotel in the historic old town, individually designed rooms.">Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer.</p>
+            </div>
+            <div class="hotel-item" style="border-left-color: var(--neon-orange);">
+                <h3><a href="https://the.niu.de/en/hotels/germany/forchheim" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Holiday Inn &ndash; the niu Hop &#8599;</a></h3>
+                <p data-de="Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet." data-en="Modern design hotel with bar, sun terrace and breakfast buffet.">Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet.</p>
+            </div>
+            <div class="hotel-item" style="border-left-color: var(--neon-orange);">
+                <h3><a href="https://hotelfranken.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Hotel Franken &#8599;</a></h3>
+                <p data-de="40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;." data-en="40 rooms, free parking, restaurant next door. From &euro;49.">40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;.</p>
+            </div>
+            <a class="directions-btn" style="background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));"
+               href="https://www.google.com/maps/search/Hotels+Forchheim/@49.7194,11.0589,14z"
+               target="_blank" rel="noopener noreferrer">
+                &#127976;
+                <span data-de="Alle Hotels in Forchheim" data-en="All Hotels in Forchheim">Alle Hotels in Forchheim</span>
+            </a>
+        </section>
+
+        <!-- Hotels Fränkische Schweiz - collapsible -->
         <section class="card fade-in">
             <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
                 <div class="card-header">
-                    <div class="card-icon">&#127976;</div>
-                    <h2 data-de="Hoteltipps in der N&auml;he" data-en="Hotel Tips Nearby">Hoteltipps in der N&auml;he</h2>
+                    <div class="card-icon">&#127966;</div>
+                    <h2 data-de="Weitere Hotels &ndash; Fr&auml;nkische Schweiz" data-en="More Hotels &ndash; Franconian Switzerland">Weitere Hotels &ndash; Fr&auml;nkische Schweiz</h2>
                 </div>
                 <span class="toggle-arrow">&#9660;</span>
             </button>
             <div class="collapsible-content">
                 <div class="collapsible-inner">
-                    <p style="margin-bottom: 10px; font-size: 15px; font-weight: 700; color: var(--neon-pink);" data-de="&#127961; Forchheim (ca. 10 Min.)" data-en="&#127961; Forchheim (approx. 10 min.)">&#127961; Forchheim (ca. 10 Min.)</p>
-                    <div class="hotel-item" style="border-left-color: var(--neon-yellow);">
-                        <h3><a href="https://www.stadtvilla-forchheim.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Stadt Villa Boutiquehotel &#8599;</a></h3>
-                        <p data-de="Forchheim &ndash; Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer." data-en="Forchheim &ndash; Charming boutique hotel in the historic old town, individually designed rooms.">Forchheim &ndash; Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer.</p>
-                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 10 Min.</p>
-                    </div>
-                    <div class="hotel-item" style="border-left-color: var(--neon-yellow);">
-                        <h3><a href="https://the.niu.de/en/hotels/germany/forchheim" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Holiday Inn &ndash; the niu Hop &#8599;</a></h3>
-                        <p data-de="Forchheim &ndash; Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet." data-en="Forchheim &ndash; Modern design hotel with bar, sun terrace and breakfast buffet.">Forchheim &ndash; Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet.</p>
-                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 10 Min.</p>
-                    </div>
-                    <div class="hotel-item" style="border-left-color: var(--neon-yellow);">
-                        <h3><a href="https://hotelfranken.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Hotel Franken &#8599;</a></h3>
-                        <p data-de="Forchheim &ndash; 40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;." data-en="Forchheim &ndash; 40 rooms, free parking, restaurant next door. From &euro;49.">Forchheim &ndash; 40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;.</p>
-                        <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 10 Min.</p>
-                    </div>
-                    <p style="margin: 16px 0 10px; font-size: 15px; font-weight: 700; color: var(--neon-pink);" data-de="&#127966; Fr&auml;nkische Schweiz (Umgebung)" data-en="&#127966; Franconian Switzerland (Surroundings)">&#127966; Fr&auml;nkische Schweiz (Umgebung)</p>
                     <div class="hotel-item">
                         <h3><a href="https://gasthaus-sponsel.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Brennerei-Gasthof Sponsel &#8599;</a></h3>
-                        <p data-de="Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof mit regionaler K&uuml;che." data-en="Kirchehrenbach &ndash; Right in town, cozy Franconian inn with regional cuisine.">Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof mit regionaler K&uuml;che.</p>
+                        <p data-de="Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof." data-en="Kirchehrenbach &ndash; Right in town, cozy Franconian inn.">Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof.</p>
                         <p style="color: var(--neon-green); font-size: 13px;">&#127861; ca. 5 Min. zu Fu&szlig;</p>
                     </div>
                     <div class="hotel-item">
                         <h3><a href="https://www.drei-linden.com/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Gasthof Drei Linden &#8599;</a></h3>
-                        <p data-de="Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension in der Fr&auml;nkischen Schweiz." data-en="Obertrubach/B&auml;rnfels &ndash; Family-run guesthouse in Franconian Switzerland.">Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension in der Fr&auml;nkischen Schweiz.</p>
+                        <p data-de="Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension." data-en="Obertrubach/B&auml;rnfels &ndash; Family-run guesthouse.">Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension.</p>
                         <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 15 Min.</p>
                     </div>
                     <div class="hotel-item">
@@ -672,10 +701,10 @@
                     </div>
                     <div class="hotel-item">
                         <h3><a href="https://www.gasthof-salb.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); text-decoration: none;">Gasthof-Pension zur Sonne &#8599;</a></h3>
-                        <p data-de="Oberehrenbach &ndash; Gem&uuml;tliche Pension mit sch&ouml;ner Aussicht, familienfreundlich." data-en="Oberehrenbach &ndash; Cozy guesthouse with beautiful views, family-friendly.">Oberehrenbach &ndash; Gem&uuml;tliche Pension mit sch&ouml;ner Aussicht, familienfreundlich.</p>
+                        <p data-de="Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich." data-en="Oberehrenbach &ndash; Cozy guesthouse, family-friendly.">Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich.</p>
                         <p style="color: var(--neon-green); font-size: 13px;">&#128663; ca. 7 Min.</p>
                     </div>
-                    <p style="margin-top: 12px; font-size: 14px; color: rgba(240,230,255,0.5);" data-de="Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz." data-en="Tip: Book early! September is peak season in Franconian Switzerland.">Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz.</p>
+                    <p style="margin-top: 12px; font-size: 14px; color: rgba(245,240,255,0.5);" data-de="Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz." data-en="Tip: Book early! September is peak season in Franconian Switzerland.">Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz.</p>
                 </div>
             </div>
         </section>
@@ -694,23 +723,28 @@
                     <ul>
                         <li>
                             <strong><a href="https://burg-feuerstein.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-yellow); text-decoration: none;" data-de="Burg Feuerstein &ndash; Abenteuerspielplatz &#8599;" data-en="Burg Feuerstein &ndash; Adventure Playground &#8599;">Burg Feuerstein &ndash; Abenteuerspielplatz &#8599;</a></strong><br>
-                            <span data-de="Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt." data-en="Large playground with climbing castle and nature experience. About 10 min. away.">Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt.</span>
+                            <span data-de="Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt." data-en="Large playground with climbing castle and nature experience. About 10 min. away.">Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt.</span><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7169,11.2247&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
                         </li>
                         <li>
                             <strong><a href="https://www.fraenkische-schweiz.com/detail/id=5f5773535f7f9b38066ef1a5" target="_blank" rel="noopener noreferrer" style="color: var(--neon-yellow); text-decoration: none;" data-de="Fossilien klopfen &ndash; Hohenmirsberger Platte &#8599;" data-en="Fossil Hunting &ndash; Hohenmirsberger Platte &#8599;">Fossilien klopfen &ndash; Hohenmirsberger Platte &#8599;</a></strong><br>
-                            <span data-de="Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min." data-en="Kids can uncover real Jurassic fossils! About 20 min. away.">Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min.</span>
+                            <span data-de="Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min." data-en="Kids can uncover real Jurassic fossils! About 20 min. away.">Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min.</span><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7483,11.3050&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
                         </li>
                         <li>
                             <strong><a href="https://www.erlebnisfelsen-pottenstein.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-yellow); text-decoration: none;" data-de="Sommerrodelbahn Pottenstein &#8599;" data-en="Summer Toboggan Run Pottenstein &#8599;">Sommerrodelbahn Pottenstein &#8599;</a></strong><br>
-                            <span data-de="Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min." data-en="Thrilling toboggan ride for the whole family. About 20 min. away.">Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min.</span>
+                            <span data-de="Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min." data-en="Thrilling toboggan ride for the whole family. About 20 min. away.">Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min.</span><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7714,11.4077&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
                         </li>
                         <li>
                             <strong><a href="https://www.pottenstein.de/teufelshoehle" target="_blank" rel="noopener noreferrer" style="color: var(--neon-yellow); text-decoration: none;" data-de="Teufelsh&ouml;hle Pottenstein &#8599;" data-en="Devil's Cave Pottenstein &#8599;">Teufelsh&ouml;hle Pottenstein &#8599;</a></strong><br>
-                            <span data-de="Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min." data-en="Impressive stalactite cave &ndash; exciting for little explorers. About 20 min.">Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min.</span>
+                            <span data-de="Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min." data-en="Impressive stalactite cave &ndash; exciting for little explorers. About 20 min.">Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min.</span><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7642,11.4028&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
                         </li>
                         <li>
                             <strong><a href="https://www.kajak-mietservice.de/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-yellow); text-decoration: none;" data-de="Kanu fahren auf der Wiesent &#8599;" data-en="Canoeing on the Wiesent River &#8599;">Kanu fahren auf der Wiesent &#8599;</a></strong><br>
-                            <span data-de="Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he." data-en="Relaxed canoe tour through Franconian Switzerland. Various entry points nearby.">Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he.</span>
+                            <span data-de="Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he." data-en="Relaxed canoe tour through Franconian Switzerland. Various entry points nearby.">Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he.</span><br>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7722,11.2333&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--neon-blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
                         </li>
                     </ul>
                 </div>
@@ -762,26 +796,34 @@
             </button>
             <div class="collapsible-content">
                 <div class="collapsible-inner">
-                    <p style="margin-bottom: 14px; color: rgba(240,230,255,0.6); font-style: italic;" data-de="Der Tag, an dem Fabian das Licht der Welt erblickte &ndash; und das passierte sonst noch:" data-en="The day Fabian was born &ndash; and here's what else was going on:">Der Tag, an dem Fabian das Licht der Welt erblickte &ndash; und das passierte sonst noch:</p>
+                    <p style="margin-bottom: 14px; color: rgba(245,240,255,0.7); font-style: italic;" data-de="Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter..." data-en="Little Fabian enters the world &ndash; and the world? It keeps spinning merrily along...">Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter...</p>
                     <ul>
                         <li>
-                            <strong data-de="Mordechai Vanunu enth&uuml;llt Israels Atomprogramm" data-en="Mordechai Vanunu Reveals Israel's Nuclear Program">Mordechai Vanunu enth&uuml;llt Israels Atomprogramm</strong><br>
-                            <span data-de="Die britische Sunday Times ver&ouml;ffentlicht die Enth&uuml;llungen des israelischen Atomtechnikers Mordechai Vanunu &uuml;ber das geheime Atomwaffenprogramm Israels &ndash; eine Weltsensation." data-en="The British Sunday Times publishes revelations from Israeli nuclear technician Mordechai Vanunu about Israel's secret nuclear weapons program &ndash; a world sensation.">Die britische Sunday Times ver&ouml;ffentlicht die Enth&uuml;llungen des israelischen Atomtechnikers Mordechai Vanunu &uuml;ber das geheime Atomwaffenprogramm Israels &ndash; eine Weltsensation.</span>
-                        </li>
-                        <li>
-                            <strong data-de="Goldener Oktober in Deutschland" data-en="Golden October in Germany">Goldener Oktober in Deutschland</strong><br>
-                            <span data-de="Deutschland erlebt einen pr&auml;chtigen Altweibersommer. Die Wirtschaft brummt unter Kanzler Kohl, die Wiedervereinigung ist noch 3 Jahre entfernt." data-en="Germany enjoys a magnificent Indian summer. The economy is booming under Chancellor Kohl, reunification is still 3 years away.">Deutschland erlebt einen pr&auml;chtigen Altweibersommer. Die Wirtschaft brummt unter Kanzler Kohl, die Wiedervereinigung ist noch 3 Jahre entfernt.</span>
-                        </li>
-                        <li>
-                            <strong data-de="Reykjavik-Gipfel steht bevor" data-en="Reykjavik Summit Approaching">Reykjavik-Gipfel steht bevor</strong><br>
-                            <span data-de="Die Welt blickt nach Island: In wenigen Tagen treffen sich Reagan und Gorbatschow zum historischen Gipfel in Reykjavik &uuml;ber nukle&auml;re Abr&uuml;stung." data-en="The world looks to Iceland: In just days, Reagan and Gorbachev will meet for the historic Reykjavik summit on nuclear disarmament.">Die Welt blickt nach Island: In wenigen Tagen treffen sich Reagan und Gorbatschow zum historischen Gipfel in Reykjavik &uuml;ber nukle&auml;re Abr&uuml;stung.</span>
-                        </li>
-                        <li>
-                            <strong data-de="Nr. 1 Hit: &bdquo;Don't Forget Me (When I'm Gone)&ldquo; &ndash; Glass Tiger" data-en="No. 1 Hit: 'Don't Forget Me (When I'm Gone)' &ndash; Glass Tiger">Nr. 1 Hit: &bdquo;Don't Forget Me (When I'm Gone)&ldquo; &ndash; Glass Tiger</strong><br>
-                            <span data-de="In den deutschen Charts dominiert der Synthie-Pop. Passend zu einem echten 80er-Baby!" data-en="Synth-pop dominates the German charts. Fitting for a true 80s baby!">In den deutschen Charts dominiert der Synthie-Pop. Passend zu einem echten 80er-Baby!</span>
+                            <strong data-de="&#127925; Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe" data-en="&#127925; No. 1 Hit: 'The Final Countdown' &ndash; Europe">&#127925; Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe</strong><br>
+                            <span data-de="Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1! Zufall? Schicksal!" data-en="Could it be more fitting? While Fabian starts his first countdown, THE countdown song is #1! Coincidence? Destiny!">Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1! Zufall? Schicksal!</span>
                             <div style="margin-top: 12px; border-radius: 12px; overflow: hidden;">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2pTMzMFnEtE4D0U4IcYSSX?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3MrRksHupTVEQ7YbA0FsZK?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
+                        </li>
+                        <li>
+                            <strong data-de="&#127917; Top Gun erobert die Kinos" data-en="&#127917; Top Gun Takes Over Cinemas">&#127917; Top Gun erobert die Kinos</strong><br>
+                            <span data-de="Tom Cruise fliegt in Kampfjets, und jeder Junge will Pilot werden. Fabian entscheidet sich noch gegen die Pilotenkarriere &ndash; vorerst." data-en="Tom Cruise flies fighter jets, and every boy wants to be a pilot. Baby Fabian decides against a pilot career &ndash; for now.">Tom Cruise fliegt in Kampfjets, und jeder Junge will Pilot werden. Fabian entscheidet sich noch gegen die Pilotenkarriere &ndash; vorerst.</span>
+                        </li>
+                        <li>
+                            <strong data-de="&#127758; Reagan &amp; Gorbatschow treffen sich in Reykjavik" data-en="&#127758; Reagan &amp; Gorbachev Meet in Reykjavik">&#127758; Reagan &amp; Gorbatschow treffen sich in Reykjavik</strong><br>
+                            <span data-de="5 Tage nach Fabians Geburt verhandeln die Superm&auml;chte &uuml;ber Atomwaffen. Fabian schaut sich das erstmal von der Wiege aus an." data-en="5 days after Fabian's birth, the superpowers negotiate nuclear weapons. Fabian watches from his cradle for now.">5 Tage nach Fabians Geburt verhandeln die Superm&auml;chte &uuml;ber Atomwaffen. Fabian schaut sich das erstmal von der Wiege aus an.</span>
+                        </li>
+                        <li>
+                            <strong data-de="&#127899; Phantom der Oper feiert Premiere in London" data-en="&#127899; Phantom of the Opera Premieres in London">&#127899; Phantom der Oper feiert Premiere in London</strong><br>
+                            <span data-de="Andrew Lloyd Webbers Meisterwerk startet am 9. Oktober. Fabian ist 3 Tage alt und hat bereits seinen eigenen dramatischen Auftritt hinter sich." data-en="Andrew Lloyd Webber's masterpiece opens October 9th. Fabian is 3 days old and has already had his own dramatic entrance.">Andrew Lloyd Webbers Meisterwerk startet am 9. Oktober. Fabian ist 3 Tage alt und hat bereits seinen eigenen dramatischen Auftritt hinter sich.</span>
+                        </li>
+                        <li>
+                            <strong data-de="&#127942; Elie Wiesel erh&auml;lt den Friedensnobelpreis" data-en="&#127942; Elie Wiesel Receives Nobel Peace Prize">&#127942; Elie Wiesel erh&auml;lt den Friedensnobelpreis</strong><br>
+                            <span data-de="Am 14. Oktober wird der Holocaust-&Uuml;berlebende ausgezeichnet. Eine Woche nach Fabians Geburt &ndash; die Welt feiert gleich zwei besondere Pers&ouml;nlichkeiten." data-en="On October 14, the Holocaust survivor is honored. One week after Fabian's birth &ndash; the world celebrates two special people.">Am 14. Oktober wird der Holocaust-&Uuml;berlebende ausgezeichnet. Eine Woche nach Fabians Geburt &ndash; die Welt feiert gleich zwei besondere Pers&ouml;nlichkeiten.</span>
+                        </li>
+                        <li>
+                            <strong data-de="&#128176; Was man 1986 f&uuml;r 1 DM bekam" data-en="&#128176; What 1 DM Got You in 1986">&#128176; Was man 1986 f&uuml;r 1 DM bekam</strong><br>
+                            <span data-de="Ein Liter Benzin: 1,08 DM. Eine Kugel Eis: 0,50 DM. Ein Bier: 2,50 DM. Fabians Windeln: unbezahlbar." data-en="A liter of gas: 1.08 DM. A scoop of ice cream: 0.50 DM. A beer: 2.50 DM. Fabian's diapers: priceless.">Ein Liter Benzin: 1,08 DM. Eine Kugel Eis: 0,50 DM. Ein Bier: 2,50 DM. Fabians Windeln: unbezahlbar.</span>
                         </li>
                     </ul>
                 </div>
