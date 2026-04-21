@@ -6,21 +6,17 @@
     <title>Fabian's 40. Geburtstag</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Righteous&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink: #e8457a;
-            --blue: #4a9eff;
-            --purple: #9b6bff;
-            --yellow: #f5a623;
-            --green: #34c759;
-            --coral: #ff6b6b;
-            --bg-top: #fef0f5;
-            --bg-mid: #f0e8ff;
-            --bg-bottom: #e8f0fe;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --text-dark: #2d2040;
-            --text-mid: #5a4a6a;
+            --gold: #b8960c;
+            --gold-light: #d4af37;
+            --black: #1a1a1a;
+            --gray: #6b6b6b;
+            --gray-light: #a0a0a0;
+            --gray-border: #e0e0e0;
+            --bg: #ffffff;
+            --bg-warm: #fafaf8;
         }
 
         * {
@@ -31,406 +27,312 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-top);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Soft gradient background */
-        .retro-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: linear-gradient(160deg, #fef0f5 0%, #f0e4ff 30%, #e4eeff 55%, #fff0f5 80%, #f5e8ff 100%);
-        }
-
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image:
-                linear-gradient(rgba(155, 107, 255, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(232, 69, 122, 0.06) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes gridMove {
-            0% { transform: perspective(600px) rotateX(0deg); }
-            100% { transform: perspective(600px) rotateX(2deg); }
-        }
-
-        /* Floating blobs */
-        .shapes-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-        }
-
-        .shape:nth-child(1) {
-            top: 5%;
-            left: -5%;
-            width: 300px;
-            height: 300px;
-            background: rgba(232, 69, 122, 0.15);
-            animation: blobA 18s ease-in-out infinite;
-        }
-
-        .shape:nth-child(2) {
-            top: 20%;
-            right: -10%;
-            width: 350px;
-            height: 350px;
-            background: rgba(74, 158, 255, 0.12);
-            animation: blobB 22s ease-in-out infinite;
-        }
-
-        .shape:nth-child(3) {
-            top: 50%;
-            left: -5%;
-            width: 280px;
-            height: 280px;
-            background: rgba(155, 107, 255, 0.12);
-            animation: blobC 20s ease-in-out infinite;
-        }
-
-        .shape:nth-child(4) {
-            top: 70%;
-            right: -5%;
-            width: 250px;
-            height: 250px;
-            background: rgba(245, 166, 35, 0.1);
-            animation: blobD 16s ease-in-out infinite;
-        }
-
-        .shape:nth-child(5) {
-            top: 90%;
-            left: 30%;
-            width: 320px;
-            height: 320px;
-            background: rgba(232, 69, 122, 0.1);
-            animation: blobE 24s ease-in-out infinite;
-        }
-
-        @keyframes blobA {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(40px, 30px) scale(1.15); }
-        }
-        @keyframes blobB {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-50px, 40px) scale(1.1); }
-        }
-        @keyframes blobC {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -40px) scale(1.2); }
-        }
-        @keyframes blobD {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, -30px) scale(1.1); }
-        }
-        @keyframes blobE {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -20px) scale(1.15); }
+            background: var(--bg);
+            color: var(--black);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Language toggle */
         .lang-toggle {
             position: fixed;
-            top: 16px;
-            right: 16px;
+            top: 20px;
+            right: 20px;
             z-index: 100;
             display: flex;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(155, 107, 255, 0.2);
-            border-radius: 25px;
-            padding: 4px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            gap: 2px;
+            background: #fff;
+            border: 1px solid var(--gray-border);
+            border-radius: 6px;
+            padding: 3px;
         }
 
         .lang-btn {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: none;
-            border-radius: 20px;
+            border-radius: 4px;
             background: transparent;
-            color: var(--text-mid);
+            color: var(--gray);
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
         }
 
         .lang-btn.active {
-            background: linear-gradient(135deg, var(--pink), var(--purple));
+            background: var(--black);
             color: #fff;
         }
 
         .lang-btn:hover:not(.active) {
-            background: rgba(155, 107, 255, 0.1);
+            color: var(--black);
         }
 
         /* Main container */
         .container {
-            max-width: 800px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 20px 16px 40px;
+            padding: 0 24px 60px;
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
+            padding: 80px 20px 50px;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            color: #fff;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
+        .hero-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            color: var(--gray);
+            margin-bottom: 30px;
         }
 
-        .hero h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: clamp(28px, 7vw, 56px);
-            background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.3;
-            margin-bottom: 16px;
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 10vw, 80px);
+            font-weight: 900;
+            color: var(--black);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
 
-        .hero-subtitle {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(18px, 4vw, 28px);
-            color: var(--text-dark);
+        .hero-wird {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 3vw, 18px);
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gray);
             margin-bottom: 8px;
         }
 
+        .hero-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(90px, 22vw, 180px);
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .hero-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--gray-light);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
         .hero-date {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(22px, 5vw, 36px);
-            color: var(--purple);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 400;
+            color: var(--black);
             margin-bottom: 6px;
         }
 
         .hero-time {
-            font-size: 20px;
-            color: var(--pink);
-            font-weight: 700;
-        }
-
-        .hero-emoji {
-            font-size: 48px;
-            margin: 20px 0;
-            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--gray);
+            font-weight: 400;
         }
 
         /* Divider */
-        .neon-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--pink), var(--purple), var(--blue), transparent);
-            margin: 30px 0;
-            border-radius: 2px;
-            opacity: 0.4;
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 40px auto;
         }
 
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(155, 107, 255, 0.12);
-            border-radius: 20px;
-            padding: 28px 24px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .divider-full {
+            width: 100%;
+            height: 1px;
+            background: var(--gray-border);
+            margin: 40px 0;
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(155, 107, 255, 0.1);
+        /* Sections */
+        .section {
+            margin-bottom: 40px;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 16px;
         }
 
-        .card-icon {
-            display: none;
+        .section p, .section li {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
         }
 
-        .card h2 {
-            font-family: 'Righteous', cursive;
-            font-size: 22px;
-            color: var(--text-dark);
-        }
-
-        .card p, .card li {
-            color: var(--text-mid);
-            line-height: 1.7;
-        }
-
-        .card ul {
+        .section ul {
             list-style: none;
             padding: 0;
         }
 
-        .card ul li {
-            padding: 10px 0;
-            padding-left: 20px;
-            position: relative;
-            border-bottom: 1px solid rgba(155, 107, 255, 0.08);
+        .section ul li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-border);
         }
 
-        .card ul li:last-child {
+        .section ul li:last-child {
             border-bottom: none;
         }
 
-        .card ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 18px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--pink);
+        .section strong {
+            color: var(--black);
+            font-weight: 500;
         }
 
-        .card strong {
-            color: var(--text-dark);
+        /* Venue name */
+        .venue-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 4px;
         }
 
-        /* Map section */
+        .venue-address {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        /* Map */
         .map-container {
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
             margin: 16px 0;
-            border: 1px solid rgba(155, 107, 255, 0.12);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--gray-border);
         }
 
         .map-container iframe {
             width: 100%;
-            height: 300px;
+            height: 280px;
             border: none;
         }
 
-        .directions-btn, .rsvp-btn {
+        /* Buttons */
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
+            padding: 12px 28px;
+            background: var(--black);
             color: #fff;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 15px;
-            margin-top: 12px;
-            transition: all 0.3s;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            margin-top: 14px;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
+            letter-spacing: 0.3px;
         }
 
-        .directions-btn:hover, .rsvp-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(232, 69, 122, 0.3);
+        .btn:hover {
+            background: #333;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--gray-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--black);
+            background: transparent;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
         }
 
         /* Countdown */
         .countdown-section {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 0;
         }
 
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 24px;
+            margin-top: 24px;
         }
 
         .countdown-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(155, 107, 255, 0.15);
-            border-radius: 16px;
-            padding: 16px 12px;
-            min-width: 80px;
             text-align: center;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
 
         .countdown-number {
-            font-family: 'Press Start 2P', cursive;
-            font-size: clamp(20px, 5vw, 32px);
-            color: var(--purple);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 7vw, 48px);
+            font-weight: 700;
+            color: var(--black);
             display: block;
+            line-height: 1.1;
         }
 
         .countdown-label {
-            font-size: 12px;
-            color: var(--text-mid);
-            margin-top: 6px;
+            font-size: 11px;
+            color: var(--gray-light);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            display: block;
         }
 
         /* RSVP */
         .rsvp-section {
             text-align: center;
-            padding: 20px;
-        }
-
-        .rsvp-section .card {
-            border-color: rgba(52, 199, 89, 0.2);
-            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 0;
+            background: var(--bg-warm);
+            margin: 40px -24px;
+            padding: 50px 24px;
         }
 
         .rsvp-phone {
-            font-family: 'Righteous', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 24px;
-            color: var(--pink);
-            margin: 12px 0;
-            word-break: break-all;
+            color: var(--black);
+            margin: 16px 0;
+        }
+
+        .rsvp-phone a {
+            color: var(--black);
+            text-decoration: none;
         }
 
         .rsvp-deadline {
-            color: var(--purple);
-            font-weight: 700;
-            font-size: 18px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
         }
 
         /* Collapsible sections */
@@ -447,17 +349,12 @@
             text-align: left;
         }
 
-        .collapsible-toggle .card-header {
-            margin-bottom: 0;
-            flex: 1;
-        }
-
         .toggle-arrow {
-            font-size: 18px;
-            color: var(--purple);
+            font-size: 14px;
+            color: var(--gray-light);
             transition: transform 0.3s;
             flex-shrink: 0;
-            margin-left: 12px;
+            margin-left: 16px;
         }
 
         .collapsible-toggle[aria-expanded="true"] .toggle-arrow {
@@ -476,69 +373,107 @@
         }
 
         .collapsible-inner {
-            padding-top: 18px;
+            padding-top: 20px;
         }
 
-        /* Hotel cards */
+        /* Hotel items */
         .hotel-item {
-            background: rgba(155, 107, 255, 0.04);
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--purple);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .hotel-item:last-of-type {
+            border-bottom: none;
         }
 
         .hotel-item h3 {
-            font-size: 16px;
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--black);
             margin-bottom: 4px;
         }
 
         .hotel-item h3 a {
-            color: var(--blue) !important;
+            color: var(--black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-border);
+            transition: border-color 0.2s;
+        }
+
+        .hotel-item h3 a:hover {
+            border-color: var(--black);
         }
 
         .hotel-item p {
             font-size: 14px;
+            color: var(--gray);
             margin: 2px 0;
+        }
+
+        .hotel-distance {
+            font-size: 12px;
+            color: var(--gray-light);
+        }
+
+        /* Activity links */
+        .activity-link {
+            color: var(--black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-border);
+            transition: border-color 0.2s;
+        }
+
+        .activity-link:hover {
+            border-color: var(--black);
+        }
+
+        .route-link {
+            color: var(--gray-light);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .route-link:hover {
+            color: var(--black);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 20px;
-            color: var(--text-mid);
+            padding: 40px 20px;
+            color: var(--gray-light);
             font-size: 12px;
-            opacity: 0.5;
         }
 
         /* Responsive */
         @media (max-width: 600px) {
             .container {
-                padding: 12px 12px 30px;
+                padding: 0 16px 40px;
             }
 
             .hero {
-                padding: 50px 12px 30px;
+                padding: 60px 12px 40px;
             }
 
-            .card {
-                padding: 20px 16px;
-            }
-
-            .countdown-item {
-                min-width: 65px;
-                padding: 12px 8px;
+            .countdown-grid {
+                gap: 16px;
             }
 
             .map-container iframe {
                 height: 220px;
             }
+
+            .rsvp-section {
+                margin: 40px -16px;
+                padding: 40px 16px;
+            }
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         ::-webkit-scrollbar-track {
@@ -546,37 +481,28 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(155, 107, 255, 0.3);
+            background: var(--gray-border);
             border-radius: 3px;
         }
 
         /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(16px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* No scanlines for light theme */
-        .scanlines::after {
-            display: none;
-        }
     </style>
 </head>
-<body class="scanlines">
-    <div class="retro-bg"></div>
-    <div class="grid-overlay"></div>
-    <div class="shapes-container">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+<body>
+
+    <!-- Design Switch -->
+    <div style="position:fixed;top:16px;left:16px;z-index:200;">
+        <a href="page2.html" style="display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);text-decoration:none;border:1px solid var(--gray-border);border-radius:6px;padding:6px 12px;transition:all .2s;" onmouseover="this.style.color='var(--black)'" onmouseout="this.style.color='var(--gray)'">Retro Design &#8599;</a>
     </div>
 
     <!-- Language Toggle -->
@@ -590,25 +516,23 @@
 
         <!-- Hero -->
         <section class="hero fade-in">
-            <div class="hero-badge" data-de="Einladung" data-en="Invitation" data-it="Invito" data-it="Invito">Einladung</div>
-            <span class="hero-emoji">&#127880;&#127926;&#128190;</span>
-            <h1>40</h1>
-            <p class="hero-subtitle" data-de="Einladung zu Fabi's 40. Geburtstag!" data-en="Invitation to Fabi's 40th Birthday!" data-it="Invito al 40esimo compleanno di Fabi!" data-it="Invito al 40esimo compleanno di Fabi!">Einladung zu Fabi's 40. Geburtstag!</p>
-            <p style="font-family: 'Righteous', cursive; font-size: clamp(14px, 3vw, 18px); color: var(--purple); margin-top: 8px;" data-de="(tats&auml;chlich: 40 Jahre minus 24 Tage)" data-en="(actually: 40 years minus 24 days)" data-it="(in realt&agrave;: 40 anni meno 24 giorni)" data-it="(in realt&agrave;: 40 anni meno 24 giorni)">(tats&auml;chlich: 40 Jahre minus 24 Tage)</p>
-            <p class="hero-date" style="margin-top: 16px;">12. September 2026</p>
-            <p class="hero-time" data-de="Ab 17:00 Uhr" data-en="From 5:00 PM" data-it="Dalle ore 17:00" data-it="Dalle ore 17:00">Ab 17:00 Uhr</p>
+            <p class="hero-label" data-de="Einladung" data-en="Invitation" data-it="Invito">Einladung</p>
+            <h1 class="hero-name">FABI</h1>
+            <p class="hero-wird" data-de="wird" data-en="turns" data-it="compie">wird</p>
+            <div class="hero-number">40</div>
+            <p class="hero-note" data-de="(tats&auml;chlich: 40 Jahre minus 24 Tage)" data-en="(actually: 40 years minus 24 days)" data-it="(in realt&agrave;: 40 anni meno 24 giorni)">(tats&auml;chlich: 40 Jahre minus 24 Tage)</p>
+            <div class="divider"></div>
+            <p class="hero-date">12. September 2026</p>
+            <p class="hero-time" data-de="Ab 17:00 Uhr" data-en="From 5:00 PM" data-it="Dalle ore 17:00">Ab 17:00 Uhr</p>
         </section>
 
-        <div class="neon-divider"></div>
+        <div class="divider-full"></div>
 
         <!-- Venue -->
-        <section class="card fade-in">
-            <div class="card-header">
-                <div class="card-icon">&#128205;</div>
-                <h2 data-de="Die Location" data-en="The Venue" data-it="La Location" data-it="La Location">Die Location</h2>
-            </div>
-            <p style="font-size: 18px; font-weight: 700; color: var(--yellow); margin-bottom: 4px;">Musikerheim Kirchehrenbach</p>
-            <p style="margin-bottom: 14px;">Sportplatzstra&szlig;e 17, 91356 Kirchehrenbach, Deutschland</p>
+        <section class="section fade-in">
+            <h2 class="section-title" data-de="Die Location" data-en="The Venue" data-it="La Location">Die Location</h2>
+            <p class="venue-name">Musikerheim Kirchehrenbach</p>
+            <p class="venue-address">Sportplatzstra&szlig;e 17, 91356 Kirchehrenbach</p>
             <div class="map-container">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2551.5!2d11.16243660185096!3d49.7359826024882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1a3c5c5c5c5c5%3A0x0!2sSportplatzstra%C3%9Fe+17%2C+91356+Kirchehrenbach!5e0!3m2!1sde!2sde!4v1"
@@ -618,132 +542,126 @@
                     title="Musikerheim Kirchehrenbach">
                 </iframe>
             </div>
-            <a class="directions-btn"
+            <a class="btn"
                href="https://www.google.com/maps/dir/?api=1&destination=49.7359826024882,11.16243660185096&travelmode=driving"
                target="_blank"
                rel="noopener noreferrer">
-                &#128663;
-                <span data-de="Route anzeigen" data-en="Get Directions" data-it="Indicazioni stradali" data-it="Indicazioni stradali">Route anzeigen</span>
+                <span data-de="Route anzeigen" data-en="Get Directions" data-it="Indicazioni stradali">Route anzeigen</span>
             </a>
         </section>
 
-        <!-- Hotels Forchheim - prominent -->
-        <section class="card fade-in" style="border-color: rgba(255, 170, 66, 0.3);">
-            <div class="card-header">
-                <div class="card-icon">&#127961;</div>
-                <h2 data-de="Hotels in Forchheim" data-en="Hotels in Forchheim" data-it="Hotel a Forchheim" data-it="Hotel a Forchheim">Hotels in Forchheim</h2>
+        <div class="divider-full"></div>
+
+        <!-- Hotels Forchheim -->
+        <section class="section fade-in">
+            <h2 class="section-title" data-de="Hotels in Forchheim" data-en="Hotels in Forchheim" data-it="Hotel a Forchheim">Hotels in Forchheim</h2>
+            <p style="margin-bottom: 16px;" data-de="Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:" data-en="Only about 10 minutes away &ndash; the biggest selection of hotels nearby:" data-it="Solo circa 10 minuti di distanza &ndash; la pi&ugrave; grande scelta di hotel nelle vicinanze:">Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:</p>
+            <div class="hotel-item">
+                <h3><a href="https://www.stadtvilla-forchheim.de/" target="_blank" rel="noopener noreferrer">Stadt Villa Boutiquehotel</a></h3>
+                <p data-de="Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer." data-en="Charming boutique hotel in the historic old town, individually designed rooms." data-it="Affascinante boutique hotel nel centro storico, camere arredate individualmente.">Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer.</p>
             </div>
-            <p style="margin-bottom: 14px; color: var(--text-mid);" data-de="Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:" data-en="Only about 10 minutes away &ndash; the biggest selection of hotels nearby:" data-it="Solo circa 10 minuti &ndash; la pi&ugrave; grande scelta di hotel nelle vicinanze:" data-it="Solo circa 10 minuti di distanza &ndash; la pi&ugrave; grande scelta di hotel nelle vicinanze:">Nur ca. 10 Minuten entfernt &ndash; die gr&ouml;&szlig;te Auswahl an Hotels in der N&auml;he:</p>
-            <div class="hotel-item" style="border-left-color: var(--yellow);">
-                <h3><a href="https://www.stadtvilla-forchheim.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Stadt Villa Boutiquehotel &#8599;</a></h3>
-                <p data-de="Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer." data-en="Charming boutique hotel in the historic old town, individually designed rooms." data-it="Affascinante boutique hotel nel centro storico, camere arredate individualmente." data-it="Affascinante boutique hotel nel centro storico, camere arredate individualmente.">Charmantes Boutiquehotel in der historischen Altstadt, individuell gestaltete Zimmer.</p>
+            <div class="hotel-item">
+                <h3><a href="https://the.niu.de/en/hotels/germany/forchheim" target="_blank" rel="noopener noreferrer">Holiday Inn &ndash; the niu Hop</a></h3>
+                <p data-de="Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet." data-en="Modern design hotel with bar, sun terrace and breakfast buffet." data-it="Moderno hotel di design con bar, terrazza e colazione a buffet.">Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet.</p>
             </div>
-            <div class="hotel-item" style="border-left-color: var(--yellow);">
-                <h3><a href="https://the.niu.de/en/hotels/germany/forchheim" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Holiday Inn &ndash; the niu Hop &#8599;</a></h3>
-                <p data-de="Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet." data-en="Modern design hotel with bar, sun terrace and breakfast buffet." data-it="Moderno hotel di design con bar, terrazza e colazione a buffet." data-it="Moderno hotel di design con bar, terrazza e colazione a buffet.">Modernes Designhotel mit Bar, Sonnenterrasse und Fr&uuml;hst&uuml;cksbuffet.</p>
+            <div class="hotel-item">
+                <h3><a href="https://hotelfranken.de/" target="_blank" rel="noopener noreferrer">Hotel Franken</a></h3>
+                <p data-de="40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;." data-en="40 rooms, free parking, restaurant next door. From &euro;49." data-it="40 camere, parcheggio gratuito, ristorante accanto. Da 49&euro;.">40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;.</p>
             </div>
-            <div class="hotel-item" style="border-left-color: var(--yellow);">
-                <h3><a href="https://hotelfranken.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Hotel Franken &#8599;</a></h3>
-                <p data-de="40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;." data-en="40 rooms, free parking, restaurant next door. From &euro;49." data-it="40 camere, parcheggio gratuito, ristorante accanto. Da 49&euro;." data-it="40 camere, parcheggio gratuito, ristorante accanto. Da 49&euro;.">40 Zimmer, kostenlose Parkpl&auml;tze, Restaurant nebenan. Ab 49&euro;.</p>
-            </div>
-            <a class="directions-btn" style="background: linear-gradient(135deg, var(--yellow), var(--pink));"
+            <a class="btn btn-outline"
                href="https://www.google.com/maps/search/Hotels+Forchheim/@49.7194,11.0589,14z"
                target="_blank" rel="noopener noreferrer">
-                &#127976;
-                <span data-de="Alle Hotels in Forchheim" data-en="All Hotels in Forchheim" data-it="Tutti gli hotel a Forchheim" data-it="Tutti gli hotel a Forchheim">Alle Hotels in Forchheim</span>
+                <span data-de="Alle Hotels in Forchheim" data-en="All Hotels in Forchheim" data-it="Tutti gli hotel a Forchheim">Alle Hotels in Forchheim</span>
             </a>
         </section>
 
-        <!-- Hotels Fränkische Schweiz - collapsible -->
-        <section class="card fade-in">
+        <div class="divider-full"></div>
+
+        <!-- Hotels Fränkische Schweiz -->
+        <section class="section fade-in">
             <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
-                <div class="card-header">
-                    <div class="card-icon">&#127966;</div>
-                    <h2 data-de="Weitere Hotels &ndash; Fr&auml;nkische Schweiz" data-en="More Hotels &ndash; Franconian Switzerland" data-it="Altri hotel &ndash; Svizzera Francone" data-it="Altri hotel &ndash; Svizzera Francone">Weitere Hotels &ndash; Fr&auml;nkische Schweiz</h2>
-                </div>
+                <h2 class="section-title" style="margin-bottom: 0;" data-de="Weitere Hotels &ndash; Fr&auml;nkische Schweiz" data-en="More Hotels &ndash; Franconian Switzerland" data-it="Altri hotel &ndash; Svizzera Francone">Weitere Hotels &ndash; Fr&auml;nkische Schweiz</h2>
                 <span class="toggle-arrow">&#9660;</span>
             </button>
             <div class="collapsible-content">
                 <div class="collapsible-inner">
                     <div class="hotel-item">
-                        <h3><a href="https://gasthaus-sponsel.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Brennerei-Gasthof Sponsel &#8599;</a></h3>
-                        <p data-de="Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof." data-en="Kirchehrenbach &ndash; Right in town, cozy Franconian inn." data-it="Kirchehrenbach &ndash; In centro, accogliente locanda francone." data-it="Kirchehrenbach &ndash; In centro, accogliente locanda francone.">Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof.</p>
-                        <p style="color: var(--green); font-size: 13px;">&#127861; ca. 5 Min. zu Fu&szlig;</p>
+                        <h3><a href="https://gasthaus-sponsel.de/" target="_blank" rel="noopener noreferrer">Brennerei-Gasthof Sponsel</a></h3>
+                        <p data-de="Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof." data-en="Kirchehrenbach &ndash; Right in town, cozy Franconian inn." data-it="Kirchehrenbach &ndash; In centro, accogliente locanda francone.">Kirchehrenbach &ndash; Direkt im Ort, gem&uuml;tlicher fr&auml;nkischer Gasthof.</p>
+                        <p class="hotel-distance" data-de="ca. 5 Min. zu Fu&szlig;" data-en="approx. 5 min. walk" data-it="ca. 5 min. a piedi">ca. 5 Min. zu Fu&szlig;</p>
                     </div>
                     <div class="hotel-item">
-                        <h3><a href="https://www.drei-linden.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Gasthof Drei Linden &#8599;</a></h3>
-                        <p data-de="Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension." data-en="Obertrubach/B&auml;rnfels &ndash; Family-run guesthouse." data-it="Obertrubach/B&auml;rnfels &ndash; Pensione a gestione familiare." data-it="Obertrubach/B&auml;rnfels &ndash; Pensione a gestione familiare.">Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension.</p>
-                        <p style="color: var(--green); font-size: 13px;">&#128663; ca. 15 Min.</p>
+                        <h3><a href="https://www.drei-linden.com/" target="_blank" rel="noopener noreferrer">Gasthof Drei Linden</a></h3>
+                        <p data-de="Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension." data-en="Obertrubach/B&auml;rnfels &ndash; Family-run guesthouse." data-it="Obertrubach/B&auml;rnfels &ndash; Pensione a gestione familiare.">Obertrubach/B&auml;rnfels &ndash; Familiengef&uuml;hrte Pension.</p>
+                        <p class="hotel-distance" data-de="ca. 15 Min. mit dem Auto" data-en="approx. 15 min. by car" data-it="ca. 15 min. in auto">ca. 15 Min. mit dem Auto</p>
                     </div>
                     <div class="hotel-item">
-                        <h3><a href="https://www.resengoerg.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Hotel-Gasthof Reseng&ouml;rg &#8599;</a></h3>
-                        <p data-de="Ebermannstadt &ndash; Tradition und Komfort seit &uuml;ber 150 Jahren." data-en="Ebermannstadt &ndash; Tradition and comfort for over 150 years." data-it="Ebermannstadt &ndash; Tradizione e comfort da oltre 150 anni." data-it="Ebermannstadt &ndash; Tradizione e comfort da oltre 150 anni.">Ebermannstadt &ndash; Tradition und Komfort seit &uuml;ber 150 Jahren.</p>
-                        <p style="color: var(--green); font-size: 13px;">&#128663; ca. 8 Min.</p>
+                        <h3><a href="https://www.resengoerg.de/" target="_blank" rel="noopener noreferrer">Hotel-Gasthof Reseng&ouml;rg</a></h3>
+                        <p data-de="Ebermannstadt &ndash; Tradition und Komfort seit &uuml;ber 150 Jahren." data-en="Ebermannstadt &ndash; Tradition and comfort for over 150 years." data-it="Ebermannstadt &ndash; Tradizione e comfort da oltre 150 anni.">Ebermannstadt &ndash; Tradition und Komfort seit &uuml;ber 150 Jahren.</p>
+                        <p class="hotel-distance" data-de="ca. 8 Min. mit dem Auto" data-en="approx. 8 min. by car" data-it="ca. 8 min. in auto">ca. 8 Min. mit dem Auto</p>
                     </div>
                     <div class="hotel-item">
-                        <h3><a href="https://hotel-feiler.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Hotel Feiler &#8599;</a></h3>
-                        <p data-de="Muggendorf &ndash; Traditionshotel seit 1895 im malerischen Wiesenttal." data-en="Muggendorf &ndash; Traditional hotel since 1895 in the scenic Wiesenttal." data-it="Muggendorf &ndash; Hotel tradizionale dal 1895 nella pittoresca Wiesenttal." data-it="Muggendorf &ndash; Hotel tradizionale dal 1895 nella pittoresca Wiesenttal.">Muggendorf &ndash; Traditionshotel seit 1895 im malerischen Wiesenttal.</p>
-                        <p style="color: var(--green); font-size: 13px;">&#128663; ca. 10 Min.</p>
+                        <h3><a href="https://hotel-feiler.de/" target="_blank" rel="noopener noreferrer">Hotel Feiler</a></h3>
+                        <p data-de="Muggendorf &ndash; Traditionshotel seit 1895 im malerischen Wiesenttal." data-en="Muggendorf &ndash; Traditional hotel since 1895 in the scenic Wiesenttal." data-it="Muggendorf &ndash; Hotel tradizionale dal 1895 nella pittoresca Wiesenttal.">Muggendorf &ndash; Traditionshotel seit 1895 im malerischen Wiesenttal.</p>
+                        <p class="hotel-distance" data-de="ca. 10 Min. mit dem Auto" data-en="approx. 10 min. by car" data-it="ca. 10 min. in auto">ca. 10 Min. mit dem Auto</p>
                     </div>
                     <div class="hotel-item">
-                        <h3><a href="https://www.gasthof-salb.de/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: none;">Gasthof-Pension zur Sonne &#8599;</a></h3>
-                        <p data-de="Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich." data-en="Oberehrenbach &ndash; Cozy guesthouse, family-friendly." data-it="Oberehrenbach &ndash; Pensione accogliente, ideale per famiglie." data-it="Oberehrenbach &ndash; Pensione accogliente, ideale per famiglie.">Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich.</p>
-                        <p style="color: var(--green); font-size: 13px;">&#128663; ca. 7 Min.</p>
+                        <h3><a href="https://www.gasthof-salb.de/" target="_blank" rel="noopener noreferrer">Gasthof-Pension zur Sonne</a></h3>
+                        <p data-de="Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich." data-en="Oberehrenbach &ndash; Cozy guesthouse, family-friendly." data-it="Oberehrenbach &ndash; Pensione accogliente, ideale per famiglie.">Oberehrenbach &ndash; Gem&uuml;tliche Pension, familienfreundlich.</p>
+                        <p class="hotel-distance" data-de="ca. 7 Min. mit dem Auto" data-en="approx. 7 min. by car" data-it="ca. 7 min. in auto">ca. 7 Min. mit dem Auto</p>
                     </div>
-                    <p style="margin-top: 12px; font-size: 14px; color: var(--text-mid); opacity: 0.7;" data-de="Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz." data-en="Tip: Book early! September is peak season in Franconian Switzerland." data-it="Consiglio: Prenotate presto! Settembre &egrave; alta stagione nella Svizzera Francone." data-it="Consiglio: Prenotate presto! Settembre &egrave; alta stagione nella Svizzera Francone.">Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz.</p>
+                    <p style="margin-top: 14px; font-size: 13px; color: var(--gray-light); font-style: italic;" data-de="Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz." data-en="Tip: Book early! September is peak season in Franconian Switzerland." data-it="Consiglio: Prenotate presto! Settembre &egrave; alta stagione nella Svizzera Francone.">Tipp: Fr&uuml;h buchen! September ist Hochsaison in der Fr&auml;nkischen Schweiz.</p>
                 </div>
             </div>
         </section>
 
+        <div class="divider-full"></div>
+
         <!-- Kids Activities -->
-        <section class="card fade-in">
+        <section class="section fade-in">
             <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
-                <div class="card-header">
-                    <div class="card-icon">&#127922;</div>
-                    <h2 data-de="Kinderaktivit&auml;ten in der N&auml;he" data-en="Kids Activities Nearby" data-it="Attivit&agrave; per bambini" data-it="Attivit&agrave; per bambini nelle vicinanze">Kinderaktivit&auml;ten in der N&auml;he</h2>
-                </div>
+                <h2 class="section-title" style="margin-bottom: 0;" data-de="Kinderaktivit&auml;ten in der N&auml;he" data-en="Kids Activities Nearby" data-it="Attivit&agrave; per bambini nelle vicinanze">Kinderaktivit&auml;ten in der N&auml;he</h2>
                 <span class="toggle-arrow">&#9660;</span>
             </button>
             <div class="collapsible-content">
                 <div class="collapsible-inner">
                     <ul>
                         <li>
-                            <strong><a href="https://burg-feuerstein.de/" target="_blank" rel="noopener noreferrer" style="color: var(--yellow); text-decoration: none;" data-de="Burg Feuerstein &ndash; Abenteuerspielplatz &#8599;" data-en="Burg Feuerstein &ndash; Adventure Playground &#8599;" data-it="Burg Feuerstein &ndash; Parco avventura &#8599;" data-it="Burg Feuerstein &ndash; Parco avventura &#8599;">Burg Feuerstein &ndash; Abenteuerspielplatz &#8599;</a></strong><br>
-                            <span data-de="Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt." data-en="Large playground with climbing castle and nature experience. About 10 min. away." data-it="Grande parco giochi con castello e natura. Ca. 10 min." data-it="Grande parco giochi con castello e natura. Ca. 10 min.">Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt.</span><br>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7169,11.2247&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
+                            <strong><a class="activity-link" href="https://burg-feuerstein.de/" target="_blank" rel="noopener noreferrer" data-de="Burg Feuerstein &ndash; Abenteuerspielplatz" data-en="Burg Feuerstein &ndash; Adventure Playground" data-it="Burg Feuerstein &ndash; Parco avventura">Burg Feuerstein &ndash; Abenteuerspielplatz</a></strong><br>
+                            <span data-de="Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt." data-en="Large playground with climbing castle and nature experience. About 10 min. away." data-it="Grande parco giochi con castello e natura. Ca. 10 min.">Gro&szlig;er Spielplatz mit Kletterburg und Naturerlebnis. Ca. 10 Min. entfernt.</span><br>
+                            <a class="route-link" href="https://www.google.com/maps/dir/?api=1&destination=49.7169,11.2247&travelmode=driving" target="_blank" rel="noopener noreferrer" data-de="Route anzeigen &rarr;" data-en="Get directions &rarr;" data-it="Indicazioni &rarr;">Route anzeigen &rarr;</a>
                         </li>
                         <li>
-                            <strong><a href="https://www.fraenkische-schweiz.com/detail/id=5f5773535f7f9b38066ef1a5" target="_blank" rel="noopener noreferrer" style="color: var(--yellow); text-decoration: none;" data-de="Fossilien klopfen &ndash; Hohenmirsberger Platte &#8599;" data-en="Fossil Hunting &ndash; Hohenmirsberger Platte &#8599;" data-it="Caccia ai fossili &ndash; Hohenmirsberger Platte &#8599;" data-it="Caccia ai fossili &ndash; Hohenmirsberger Platte &#8599;">Fossilien klopfen &ndash; Hohenmirsberger Platte &#8599;</a></strong><br>
-                            <span data-de="Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min." data-en="Kids can uncover real Jurassic fossils! About 20 min. away." data-it="I bambini possono scoprire veri fossili del Giurassico! Ca. 20 min." data-it="I bambini possono scoprire veri fossili del Giurassico! Ca. 20 min.">Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min.</span><br>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7483,11.3050&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
+                            <strong><a class="activity-link" href="https://www.fraenkische-schweiz.com/detail/id=5f5773535f7f9b38066ef1a5" target="_blank" rel="noopener noreferrer" data-de="Fossilien klopfen &ndash; Hohenmirsberger Platte" data-en="Fossil Hunting &ndash; Hohenmirsberger Platte" data-it="Caccia ai fossili &ndash; Hohenmirsberger Platte">Fossilien klopfen &ndash; Hohenmirsberger Platte</a></strong><br>
+                            <span data-de="Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min." data-en="Kids can uncover real Jurassic fossils! About 20 min. away." data-it="I bambini possono scoprire veri fossili del Giurassico! Ca. 20 min.">Kinder k&ouml;nnen echte Fossilien aus dem Jura freilegen! Ca. 20 Min.</span><br>
+                            <a class="route-link" href="https://www.google.com/maps/dir/?api=1&destination=49.7483,11.3050&travelmode=driving" target="_blank" rel="noopener noreferrer" data-de="Route anzeigen &rarr;" data-en="Get directions &rarr;" data-it="Indicazioni &rarr;">Route anzeigen &rarr;</a>
                         </li>
                         <li>
-                            <strong><a href="https://www.erlebnisfelsen-pottenstein.de/" target="_blank" rel="noopener noreferrer" style="color: var(--yellow); text-decoration: none;" data-de="Sommerrodelbahn Pottenstein &#8599;" data-en="Summer Toboggan Run Pottenstein &#8599;" data-it="Slittovia estiva Pottenstein &#8599;" data-it="Slittovia estiva Pottenstein &#8599;">Sommerrodelbahn Pottenstein &#8599;</a></strong><br>
-                            <span data-de="Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min." data-en="Thrilling toboggan ride for the whole family. About 20 min. away." data-it="Emozionante discesa in slittino per tutta la famiglia. Ca. 20 min." data-it="Emozionante discesa in slittino per tutta la famiglia. Ca. 20 min.">Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min.</span><br>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7714,11.4077&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
+                            <strong><a class="activity-link" href="https://www.erlebnisfelsen-pottenstein.de/" target="_blank" rel="noopener noreferrer" data-de="Sommerrodelbahn Pottenstein" data-en="Summer Toboggan Run Pottenstein" data-it="Slittovia estiva Pottenstein">Sommerrodelbahn Pottenstein</a></strong><br>
+                            <span data-de="Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min." data-en="Thrilling toboggan ride for the whole family. About 20 min. away." data-it="Emozionante discesa in slittino per tutta la famiglia. Ca. 20 min.">Rasante Rodelpartie f&uuml;r die ganze Familie. Ca. 20 Min.</span><br>
+                            <a class="route-link" href="https://www.google.com/maps/dir/?api=1&destination=49.7714,11.4077&travelmode=driving" target="_blank" rel="noopener noreferrer" data-de="Route anzeigen &rarr;" data-en="Get directions &rarr;" data-it="Indicazioni &rarr;">Route anzeigen &rarr;</a>
                         </li>
                         <li>
-                            <strong><a href="https://www.pottenstein.de/teufelshoehle" target="_blank" rel="noopener noreferrer" style="color: var(--yellow); text-decoration: none;" data-de="Teufelsh&ouml;hle Pottenstein &#8599;" data-en="Devil's Cave Pottenstein &#8599;" data-it="Grotta del Diavolo Pottenstein &#8599;">Teufelsh&ouml;hle Pottenstein &#8599;</a></strong><br>
+                            <strong><a class="activity-link" href="https://www.pottenstein.de/teufelshoehle" target="_blank" rel="noopener noreferrer" data-de="Teufelsh&ouml;hle Pottenstein" data-en="Devil's Cave Pottenstein" data-it="Grotta del Diavolo Pottenstein">Teufelsh&ouml;hle Pottenstein</a></strong><br>
                             <span data-de="Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min." data-en="Impressive stalactite cave &ndash; exciting for little explorers. About 20 min." data-it="Impressionante grotta di stalattiti &ndash; emozionante per piccoli esploratori. Ca. 20 min.">Beeindruckende Tropfsteinh&ouml;hle &ndash; spannend f&uuml;r kleine Entdecker. Ca. 20 Min.</span><br>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7642,11.4028&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
+                            <a class="route-link" href="https://www.google.com/maps/dir/?api=1&destination=49.7642,11.4028&travelmode=driving" target="_blank" rel="noopener noreferrer" data-de="Route anzeigen &rarr;" data-en="Get directions &rarr;" data-it="Indicazioni &rarr;">Route anzeigen &rarr;</a>
                         </li>
                         <li>
-                            <strong><a href="https://www.kajak-mietservice.de/" target="_blank" rel="noopener noreferrer" style="color: var(--yellow); text-decoration: none;" data-de="Kanu fahren auf der Wiesent &#8599;" data-en="Canoeing on the Wiesent River &#8599;" data-it="Canoa sul fiume Wiesent &#8599;">Kanu fahren auf der Wiesent &#8599;</a></strong><br>
+                            <strong><a class="activity-link" href="https://www.kajak-mietservice.de/" target="_blank" rel="noopener noreferrer" data-de="Kanu fahren auf der Wiesent" data-en="Canoeing on the Wiesent River" data-it="Canoa sul fiume Wiesent">Kanu fahren auf der Wiesent</a></strong><br>
                             <span data-de="Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he." data-en="Relaxed canoe tour through Franconian Switzerland. Various entry points nearby." data-it="Rilassante tour in canoa attraverso la Svizzera Francone.">Gem&uuml;tliche Kanutour durch die Fr&auml;nkische Schweiz. Verschiedene Einstiege in der N&auml;he.</span><br>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=49.7722,11.2333&travelmode=driving" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-size: 13px; text-decoration: none;">&#128205; Route anzeigen</a>
+                            <a class="route-link" href="https://www.google.com/maps/dir/?api=1&destination=49.7722,11.2333&travelmode=driving" target="_blank" rel="noopener noreferrer" data-de="Route anzeigen &rarr;" data-en="Get directions &rarr;" data-it="Indicazioni &rarr;">Route anzeigen &rarr;</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <div class="divider-full"></div>
+
         <!-- 80s Party -->
-        <section class="card fade-in">
+        <section class="section fade-in">
             <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
-                <div class="card-header">
-                    <div class="card-icon">&#127911;</div>
-                    <h2 data-de="80er Jahre Party &ndash; Was erwartet dich?" data-en="80s Party &ndash; What to Expect?" data-it="Festa anni '80 &ndash; Cosa aspettarsi?">80er Jahre Party &ndash; Was erwartet dich?</h2>
-                </div>
+                <h2 class="section-title" style="margin-bottom: 0;" data-de="80er Jahre Party &ndash; Was erwartet dich?" data-en="80s Party &ndash; What to Expect?" data-it="Festa anni '80 &ndash; Cosa aspettarsi?">80er Jahre Party &ndash; Was erwartet dich?</h2>
                 <span class="toggle-arrow">&#9660;</span>
             </button>
             <div class="collapsible-content">
@@ -771,44 +689,43 @@
             </div>
         </section>
 
+        <div class="divider-full"></div>
+
         <!-- What happened on 06.10.1986 -->
-        <section class="card fade-in">
+        <section class="section fade-in">
             <button class="collapsible-toggle" aria-expanded="false" onclick="toggleSection(this)">
-                <div class="card-header">
-                    <div class="card-icon">&#128240;</div>
-                    <h2 data-de="Was geschah am 06.10.1986?" data-en="What Happened on Oct 6, 1986?" data-it="Cosa successe il 6 ottobre 1986?">Was geschah am 06.10.1986?</h2>
-                </div>
+                <h2 class="section-title" style="margin-bottom: 0;" data-de="Was geschah am 06.10.1986?" data-en="What Happened on Oct 6, 1986?" data-it="Cosa successe il 6 ottobre 1986?">Was geschah am 06.10.1986?</h2>
                 <span class="toggle-arrow">&#9660;</span>
             </button>
             <div class="collapsible-content">
                 <div class="collapsible-inner">
-                    <p style="margin-bottom: 14px; color: var(--text-mid); font-style: italic;" data-de="Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter..." data-en="Little Fabian enters the world &ndash; and the world? It keeps spinning merrily along..." data-it="Il piccolo Fabian viene al mondo &ndash; e il mondo? Continua a girare allegramente...">Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter...</p>
+                    <p style="margin-bottom: 14px; font-style: italic; color: var(--gray-light);" data-de="Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter..." data-en="Little Fabian enters the world &ndash; and the world? It keeps spinning merrily along..." data-it="Il piccolo Fabian viene al mondo &ndash; e il mondo? Continua a girare allegramente...">Der kleine Fabian erblickt das Licht der Welt &ndash; und die Welt? Die dreht sich fr&ouml;hlich weiter...</p>
                     <ul>
                         <li>
-                            <strong data-de="&#127925; Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe" data-en="&#127925; No. 1 Hit: 'The Final Countdown' &ndash; Europe" data-it="&#127925; Hit n. 1: 'The Final Countdown' &ndash; Europe">&#127925; Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe</strong><br>
-                            <span data-de="Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1! Zufall? Schicksal!" data-en="Could it be more fitting? While Fabian starts his first countdown, THE countdown song is #1! Coincidence? Destiny!" data-it="Pi&ugrave; azzeccato di cos&igrave; non si pu&ograve;: mentre Fabian inizia il suo primo countdown, LA canzone del countdown &egrave; al n. 1! Coincidenza? Destino!">Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1! Zufall? Schicksal!</span>
-                            <div style="margin-top: 12px; border-radius: 12px; overflow: hidden;">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3MrRksHupTVEQ7YbA0FsZK?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            <strong data-de="Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe" data-en="No. 1 Hit: 'The Final Countdown' &ndash; Europe" data-it="Hit n. 1: 'The Final Countdown' &ndash; Europe">Nr. 1 Hit: &bdquo;The Final Countdown&ldquo; &ndash; Europe</strong><br>
+                            <span data-de="Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1!" data-en="Could it be more fitting? While Fabian starts his first countdown, THE countdown song is #1!" data-it="Pi&ugrave; azzeccato di cos&igrave; non si pu&ograve;: mentre Fabian inizia il suo primo countdown, LA canzone del countdown &egrave; al n. 1!">Passender geht's nicht: W&auml;hrend Fabian seinen ersten Countdown startet, l&auml;uft DER Countdown-Song schlechthin auf Platz 1!</span>
+                            <div style="margin-top: 12px; border-radius: 8px; overflow: hidden;">
+                                <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/3MrRksHupTVEQ7YbA0FsZK?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
                         </li>
                         <li>
-                            <strong data-de="&#127917; Top Gun erobert die Kinos" data-en="&#127917; Top Gun Takes Over Cinemas" data-it="&#127917; Top Gun conquista i cinema">&#127917; Top Gun erobert die Kinos</strong><br>
+                            <strong data-de="Top Gun erobert die Kinos" data-en="Top Gun Takes Over Cinemas" data-it="Top Gun conquista i cinema">Top Gun erobert die Kinos</strong><br>
                             <span data-de="Tom Cruise fliegt in Kampfjets, und jeder Junge will Pilot werden. Fabian entscheidet sich noch gegen die Pilotenkarriere &ndash; vorerst." data-en="Tom Cruise flies fighter jets, and every boy wants to be a pilot. Baby Fabian decides against a pilot career &ndash; for now." data-it="Tom Cruise vola con i jet da combattimento e ogni ragazzo vuole diventare pilota. Il piccolo Fabian decide contro la carriera da pilota &ndash; per ora.">Tom Cruise fliegt in Kampfjets, und jeder Junge will Pilot werden. Fabian entscheidet sich noch gegen die Pilotenkarriere &ndash; vorerst.</span>
                         </li>
                         <li>
-                            <strong data-de="&#127758; Reagan &amp; Gorbatschow treffen sich in Reykjavik" data-en="&#127758; Reagan &amp; Gorbachev Meet in Reykjavik" data-it="&#127758; Reagan e Gorbaciov si incontrano a Reykjavik">&#127758; Reagan &amp; Gorbatschow treffen sich in Reykjavik</strong><br>
+                            <strong data-de="Reagan &amp; Gorbatschow treffen sich in Reykjavik" data-en="Reagan &amp; Gorbachev Meet in Reykjavik" data-it="Reagan e Gorbaciov si incontrano a Reykjavik">Reagan &amp; Gorbatschow treffen sich in Reykjavik</strong><br>
                             <span data-de="5 Tage nach Fabians Geburt verhandeln die Superm&auml;chte &uuml;ber Atomwaffen. Fabian schaut sich das erstmal von der Wiege aus an." data-en="5 days after Fabian's birth, the superpowers negotiate nuclear weapons. Fabian watches from his cradle for now." data-it="5 giorni dopo la nascita di Fabian, le superpotenze negoziano sulle armi nucleari. Fabian osserva dalla culla.">5 Tage nach Fabians Geburt verhandeln die Superm&auml;chte &uuml;ber Atomwaffen. Fabian schaut sich das erstmal von der Wiege aus an.</span>
                         </li>
                         <li>
-                            <strong data-de="&#127899; Phantom der Oper feiert Premiere in London" data-en="&#127899; Phantom of the Opera Premieres in London" data-it="&#127899; Il Fantasma dell'Opera debutta a Londra">&#127899; Phantom der Oper feiert Premiere in London</strong><br>
+                            <strong data-de="Phantom der Oper feiert Premiere in London" data-en="Phantom of the Opera Premieres in London" data-it="Il Fantasma dell'Opera debutta a Londra">Phantom der Oper feiert Premiere in London</strong><br>
                             <span data-de="Andrew Lloyd Webbers Meisterwerk startet am 9. Oktober. Fabian ist 3 Tage alt und hat bereits seinen eigenen dramatischen Auftritt hinter sich." data-en="Andrew Lloyd Webber's masterpiece opens October 9th. Fabian is 3 days old and has already had his own dramatic entrance." data-it="Il capolavoro di Andrew Lloyd Webber debutta il 9 ottobre. Fabian ha 3 giorni e ha gi&agrave; fatto la sua entrata drammatica.">Andrew Lloyd Webbers Meisterwerk startet am 9. Oktober. Fabian ist 3 Tage alt und hat bereits seinen eigenen dramatischen Auftritt hinter sich.</span>
                         </li>
                         <li>
-                            <strong data-de="&#127942; Elie Wiesel erh&auml;lt den Friedensnobelpreis" data-en="&#127942; Elie Wiesel Receives Nobel Peace Prize" data-it="&#127942; Elie Wiesel riceve il Premio Nobel per la Pace">&#127942; Elie Wiesel erh&auml;lt den Friedensnobelpreis</strong><br>
+                            <strong data-de="Elie Wiesel erh&auml;lt den Friedensnobelpreis" data-en="Elie Wiesel Receives Nobel Peace Prize" data-it="Elie Wiesel riceve il Premio Nobel per la Pace">Elie Wiesel erh&auml;lt den Friedensnobelpreis</strong><br>
                             <span data-de="Am 14. Oktober wird der Holocaust-&Uuml;berlebende ausgezeichnet. Eine Woche nach Fabians Geburt &ndash; die Welt feiert gleich zwei besondere Pers&ouml;nlichkeiten." data-en="On October 14, the Holocaust survivor is honored. One week after Fabian's birth &ndash; the world celebrates two special people." data-it="Il 14 ottobre il sopravvissuto all'Olocausto viene premiato. Una settimana dopo la nascita di Fabian &ndash; il mondo celebra due persone speciali.">Am 14. Oktober wird der Holocaust-&Uuml;berlebende ausgezeichnet. Eine Woche nach Fabians Geburt &ndash; die Welt feiert gleich zwei besondere Pers&ouml;nlichkeiten.</span>
                         </li>
                         <li>
-                            <strong data-de="&#128176; Was man 1986 f&uuml;r 1 DM bekam" data-en="&#128176; What 1 DM Got You in 1986" data-it="&#128176; Cosa si comprava con 1 DM nel 1986">&#128176; Was man 1986 f&uuml;r 1 DM bekam</strong><br>
+                            <strong data-de="Was man 1986 f&uuml;r 1 DM bekam" data-en="What 1 DM Got You in 1986" data-it="Cosa si comprava con 1 DM nel 1986">Was man 1986 f&uuml;r 1 DM bekam</strong><br>
                             <span data-de="Ein Liter Benzin: 1,08 DM. Eine Kugel Eis: 0,50 DM. Ein Bier: 2,50 DM. Fabians Windeln: unbezahlbar." data-en="A liter of gas: 1.08 DM. A scoop of ice cream: 0.50 DM. A beer: 2.50 DM. Fabian's diapers: priceless." data-it="Un litro di benzina: 1,08 DM. Un gelato: 0,50 DM. Una birra: 2,50 DM. I pannolini di Fabian: impagabili.">Ein Liter Benzin: 1,08 DM. Eine Kugel Eis: 0,50 DM. Ein Bier: 2,50 DM. Fabians Windeln: unbezahlbar.</span>
                         </li>
                     </ul>
@@ -816,33 +733,26 @@
             </div>
         </section>
 
-        <div class="neon-divider"></div>
+        <div class="divider-full"></div>
 
         <!-- RSVP -->
         <section class="rsvp-section fade-in">
-            <div class="card">
-                <div class="card-header" style="justify-content: center;">
-                    <div class="card-icon">&#128233;</div>
-                    <h2 data-de="R&uuml;ckmeldung" data-en="RSVP" data-it="Conferma">R&uuml;ckmeldung</h2>
-                </div>
-                <p style="margin-bottom: 12px; line-height: 1.8;" data-de="Ich freue mich auf Dich/Euch und die gemeinsame Fete!" data-en="I'm looking forward to seeing you and partying together!" data-it="Non vedo l'ora di vederti/vedervi e di fare festa insieme!">Ich freue mich auf Dich/Euch und die gemeinsame Fete!</p>
-                <p data-de="Bitte bis zum" data-en="Please by" data-it="Per favore entro il">Bitte bis zum</p>
-                <p class="rsvp-deadline">31. Mai 2026</p>
-                <p class="rsvp-phone">
-                    <a href="tel:+41793049385" style="color: var(--green); text-decoration: none;">+41 79 304 93 85</a>
-                </p>
-                <a class="rsvp-btn" href="https://wa.me/41793049385" target="_blank" rel="noopener noreferrer">
-                    &#128172;
-                    <span data-de="WhatsApp schreiben" data-en="Send WhatsApp" data-it="Scrivi su WhatsApp">WhatsApp schreiben</span>
-                </a>
-            </div>
+            <h2 class="section-title" data-de="R&uuml;ckmeldung" data-en="RSVP" data-it="Conferma">R&uuml;ckmeldung</h2>
+            <p style="margin-bottom: 16px; color: var(--gray);" data-de="Ich freue mich auf Dich/Euch und die gemeinsame Fete!" data-en="I'm looking forward to seeing you and partying together!" data-it="Non vedo l'ora di vederti/vedervi e di fare festa insieme!">Ich freue mich auf Dich/Euch und die gemeinsame Fete!</p>
+            <p style="color: var(--gray); font-size: 14px;" data-de="Bitte bis zum" data-en="Please by" data-it="Per favore entro il">Bitte bis zum</p>
+            <p class="rsvp-deadline">31. Mai 2026</p>
+            <p class="rsvp-phone">
+                <a href="tel:+41793049385">+41 79 304 93 85</a>
+            </p>
+            <a class="btn btn-gold" href="https://wa.me/41793049385" target="_blank" rel="noopener noreferrer">
+                <span data-de="WhatsApp schreiben" data-en="Send WhatsApp" data-it="Scrivi su WhatsApp">WhatsApp schreiben</span>
+            </a>
         </section>
-
-        <div class="neon-divider"></div>
 
         <!-- Countdown -->
         <section class="countdown-section fade-in">
-            <h2 style="font-family: 'Righteous', cursive; font-size: 22px; color: var(--yellow);" data-de="Countdown zum Fest" data-en="Countdown to the Party" data-it="Conto alla rovescia">Countdown zum Fest</h2>
+            <div class="divider"></div>
+            <h2 class="section-title" style="text-align: center;" data-de="Countdown" data-en="Countdown" data-it="Conto alla rovescia">Countdown</h2>
             <div class="countdown-grid">
                 <div class="countdown-item">
                     <span class="countdown-number" id="cd-days">---</span>
@@ -866,11 +776,10 @@
     </div>
 
     <footer>
-        <p>Made with &#10084;&#65039; for Fabian's 40th &ndash; 2026</p>
+        <p>Made with love for Fabi's 40th &ndash; 2026</p>
     </footer>
 
     <script>
-        // Language toggle
         let currentLang = 'de';
 
         function setLang(lang) {
@@ -882,7 +791,8 @@
             });
 
             document.querySelectorAll('[data-de]').forEach(el => {
-                el.textContent = el.getAttribute('data-' + lang);
+                const val = el.getAttribute('data-' + lang);
+                if (val) el.textContent = val;
             });
 
             const titles = {
@@ -893,7 +803,6 @@
             document.title = titles[lang] || titles.de;
         }
 
-        // Collapsible sections
         function toggleSection(btn) {
             const content = btn.nextElementSibling;
             const isOpen = content.classList.contains('open');
@@ -901,7 +810,6 @@
             btn.setAttribute('aria-expanded', !isOpen);
         }
 
-        // Countdown
         function updateCountdown() {
             const partyDate = new Date('2026-09-12T17:00:00+02:00');
             const now = new Date();
@@ -929,7 +837,6 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
