@@ -1005,14 +1005,12 @@
 
     </div>
 
-    <!-- Floating Spotify Player: Daft Punk – Get Lucky -->
-    <div id="spotify-player" style="position:fixed;bottom:20px;right:20px;z-index:300;width:300px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.18);background:#000;">
-        <iframe style="border-radius:12px;display:block"
-            src="https://open.spotify.com/embed/track/2Foc5Q5nqNiosCNqttzHof?utm_source=generator&autoplay=1"
-            width="300" height="80" frameBorder="0" allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"></iframe>
-    </div>
+    <!-- Background Music -->
+    <audio id="bgMusic" src="getlucky.mp3" loop preload="auto"></audio>
+    <button id="musicBtn" onclick="toggleMusic()" aria-label="Musik ein/aus"
+        style="position:fixed;bottom:24px;right:24px;z-index:300;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:var(--black);color:#fff;font-size:20px;box-shadow:0 4px 16px rgba(0,0,0,0.18);transition:all .2s;display:flex;align-items:center;justify-content:center;">
+        &#9654;
+    </button>
 
     <footer>
         <p>Made with love for Fabi's 40th &ndash; 2026</p>
@@ -1085,6 +1083,42 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Background music – starts on first user interaction
+        let musicPlaying = false;
+        let musicStarted = false;
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                audio.pause();
+                musicPlaying = false;
+                btn.innerHTML = '&#9654;';
+                btn.style.background = 'var(--black)';
+            } else {
+                audio.play();
+                musicPlaying = true;
+                btn.innerHTML = '&#9646;&#9646;';
+                btn.style.background = 'var(--gold)';
+            }
+        }
+
+        // Auto-start on first interaction anywhere on the page
+        function autoStart() {
+            if (!musicStarted) {
+                musicStarted = true;
+                audio.play().then(() => {
+                    musicPlaying = true;
+                    btn.innerHTML = '&#9646;&#9646;';
+                    btn.style.background = 'var(--gold)';
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', autoStart);
+            document.removeEventListener('touchstart', autoStart);
+        }
+        document.addEventListener('click', autoStart);
+        document.addEventListener('touchstart', autoStart);
     </script>
 </body>
 </html>
