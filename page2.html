@@ -58,32 +58,6 @@
         .lang-btn.active { background: var(--terra); color: var(--cream); }
         .lang-btn:hover:not(.active) { color: var(--cream); }
 
-        /* ─── DESIGN SWITCH ───────────────────────────────── */
-        .design-switch {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 200;
-        }
-        .design-switch a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--cream-dim);
-            text-decoration: none;
-            border: 1px solid rgba(240,224,196,.2);
-            border-radius: 6px;
-            padding: 6px 12px;
-            background: var(--bg-card);
-            transition: all .2s;
-        }
-        .design-switch a:hover { color: var(--cream); border-color: rgba(240,224,196,.4); }
-
         /* ─── CONTAINER ───────────────────────────────────── */
         .container {
             max-width: 720px;
@@ -433,12 +407,7 @@
 </head>
 <body>
 
-    <!-- Design Switch -->
-    <div class="design-switch">
-        <a href="index.html" data-de="&#8592; Elegantes Design" data-en="&#8592; Elegant Design" data-it="&#8592; Design elegante">&#8592; Elegantes Design</a>
-    </div>
-
-    <!-- Language Toggle -->
+<!-- Language Toggle -->
     <div class="lang-toggle" role="group" aria-label="Language">
         <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
