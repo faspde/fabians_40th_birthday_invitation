@@ -462,54 +462,53 @@
             <p class="hero-wird" data-de="wird" data-en="turns" data-it="compie">wird</p>
             <div class="hero-number">40</div>
 
-            <!-- Cocktail glass + arm illustration -->
-            <svg class="hero-illustration" viewBox="0 0 200 275" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Cocktail glass illustration -->
+            <svg class="hero-illustration" viewBox="0 0 160 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
-                <!-- === GLASS === -->
-                <!-- Liquid fill (pink triangle) -->
-                <path d="M 66 20 L 176 20 L 121 84 Z" fill="#d9507a" opacity="0.9"/>
+                <!-- Liquid fill -->
+                <polygon points="29,46 131,46 80,112" fill="#d9507a" opacity="0.90"/>
+
+                <!-- Liquid surface shimmer -->
+                <line x1="29" y1="46" x2="131" y2="46" stroke="#e8709a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
                 <!-- Glass outline -->
-                <path d="M 64 16 L 178 16 L 121 84 Z" stroke="#f0e0c4" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
-                <!-- Top rim line -->
-                <line x1="64" y1="16" x2="178" y2="16" stroke="#f0e0c4" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M 8 18 L 152 18 L 80 112 Z" stroke="#f0e0c4" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
+
+                <!-- Rim -->
+                <line x1="8" y1="18" x2="152" y2="18" stroke="#f0e0c4" stroke-width="4.5" stroke-linecap="round"/>
+
                 <!-- Stem -->
-                <line x1="121" y1="84" x2="121" y2="156" stroke="#f0e0c4" stroke-width="3" stroke-linecap="round"/>
+                <line x1="80" y1="112" x2="80" y2="158" stroke="#f0e0c4" stroke-width="3.5" stroke-linecap="round"/>
+
                 <!-- Base -->
-                <line x1="104" y1="156" x2="138" y2="156" stroke="#f0e0c4" stroke-width="3" stroke-linecap="round"/>
-                <!-- Toothpick + olive/cherry -->
-                <line x1="108" y1="16" x2="133" y2="31" stroke="#f0e0c4" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="121" cy="24" r="8.5" fill="#d4af37"/>
-                <circle cx="121" cy="24" r="3.5" fill="#6e1f0a"/>
+                <line x1="48" y1="158" x2="112" y2="158" stroke="#f0e0c4" stroke-width="5" stroke-linecap="round"/>
+
+                <!-- Toothpick -->
+                <line x1="66" y1="18" x2="102" y2="44" stroke="#f0e0c4" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+
+                <!-- Cherry: gold with dark center -->
+                <circle cx="102" cy="44" r="11" fill="#d4af37"/>
+                <circle cx="102" cy="44" r="4.5" fill="#6e1f0a"/>
+                <!-- Cherry stem curl -->
+                <path d="M 102 33 Q 108 26 104 20" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+                <!-- Bubbles in liquid -->
+                <circle cx="66" cy="88" r="3.5" fill="rgba(255,255,255,0.22)"/>
+                <circle cx="85" cy="72" r="2.5" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="55" cy="98" r="2" fill="rgba(255,255,255,0.18)"/>
+                <circle cx="98" cy="85" r="3" fill="rgba(255,255,255,0.15)"/>
+                <circle cx="75" cy="105" r="2" fill="rgba(255,255,255,0.12)"/>
+
                 <!-- Glass shine -->
-                <path d="M 80 20 L 98 62" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"/>
-
-                <!-- === ARM === -->
-                <!-- Main arm: simple clean arc from lower-left up to glass base -->
-                <path d="M 14 272 Q 72 208 118 158"
-                      stroke="#d4693a" stroke-width="50" stroke-linecap="round" fill="none"/>
-                <!-- Arm inner tone for roundness -->
-                <path d="M 14 272 Q 72 208 118 158"
-                      stroke="#b85020" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.28"/>
-
-                <!-- Thumb: short branch from wrist pointing upper-left -->
-                <path d="M 100 164 Q 84 152 80 137"
-                      stroke="#d4693a" stroke-width="24" stroke-linecap="round" fill="none"/>
-                <!-- Thumb tone -->
-                <path d="M 100 164 Q 84 152 80 137"
-                      stroke="#b85020" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.25"/>
-
-                <!-- Bangles near wrist (arm ≈ 75% up toward glass) -->
-                <!-- Arm at t=0.75: approx (93, 185) — angle ~-52° from horizontal -->
-                <ellipse cx="93" cy="185" rx="23" ry="8" fill="none" stroke="#d4af37" stroke-width="4.5"
-                         transform="rotate(-52 93 185)"/>
-                <ellipse cx="82" cy="197" rx="21" ry="7" fill="none" stroke="#d4af37" stroke-width="3.5"
-                         transform="rotate(-52 82 197)"/>
+                <path d="M 24 26 L 40 76" stroke="rgba(255,255,255,0.14)" stroke-width="4" stroke-linecap="round"/>
 
             </svg>
 
             <div class="hero-tagline">
-                <span class="tagline-pill" data-de="80er Musik" data-en="80s Music" data-it="Musica anni '80">80er Musik</span>
-                <span class="tagline-pill" data-de="Party & Fete" data-en="Party & Fun" data-it="Party & Festa">Party & Fete</span>
+                <span class="tagline-pill" data-de="Schlemmen" data-en="Feasting" data-it="Mangiare">Schlemmen</span>
+                <span class="tagline-pill" data-de="Feiern" data-en="Celebrating" data-it="Festeggiare">Feiern</span>
+                <span class="tagline-pill" data-de="Trinken" data-en="Drinking" data-it="Bere">Trinken</span>
+                <span class="tagline-pill" data-de="Tanzen" data-en="Dancing" data-it="Ballare">Tanzen</span>
             </div>
 
             <div class="hero-meta">
@@ -1026,10 +1025,6 @@
                data-de="Bitte gebt mir bis zum 30.06. Bescheid, ob ich mit Euch rechnen kann."
                data-en="Please let me know by June 30 if I can count on you."
                data-it="Per favore fatemi sapere entro il 30 giugno se posso contare su di voi.">Bitte gebt mir bis zum 30.06. Bescheid, ob ich mit Euch rechnen kann.</p>
-            <p class="rsvp-deadline"
-               data-de="Deadline: 30. Juni 2026"
-               data-en="Deadline: June 30, 2026"
-               data-it="Scadenza: 30 giugno 2026">Deadline: 30. Juni 2026</p>
             <p class="rsvp-phone"><a href="tel:+41793049385">+41 79 304 93 85</a></p>
             <a class="btn btn-gold" href="https://wa.me/41793049385" target="_blank" rel="noopener noreferrer">
                 <span data-de="WhatsApp schreiben" data-en="Send WhatsApp" data-it="Scrivi su WhatsApp">WhatsApp schreiben</span>
@@ -1037,12 +1032,12 @@
         </section>
 
         <!-- Farewell -->
-        <div style="text-align:center;padding:28px 0 10px;">
-            <p style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(15px,3.5vw,19px);font-weight:400;letter-spacing:1.5px;color:var(--cream-dim);line-height:1.8;font-style:italic;"
+        <div style="text-align:center;padding:36px 0 14px;">
+            <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,5vw,30px);letter-spacing:3px;color:var(--cream);line-height:1.4;"
                data-de="Liebe Gr&uuml;sse und bis hoffentlich sp&auml;testens im September!"
-               data-en="Warm greetings and hopefully see you in September at the latest!"
-               data-it="Cari saluti e speriamo di vederci al pi&ugrave; tardi a settembre!">Liebe Gr&uuml;sse und bis hoffentlich sp&auml;testens im September!</p>
-            <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,5vw,34px);letter-spacing:4px;color:var(--cream);margin-top:4px;"
+               data-en="Warm greetings &ndash; see you in September at the latest!"
+               data-it="Cari saluti &ndash; a settembre al pi&ugrave; tardi!">Liebe Gr&uuml;sse und bis hoffentlich sp&auml;testens im September!</p>
+            <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,48px);letter-spacing:5px;color:var(--gold);margin-top:6px;"
                data-de="Euer Fabian" data-en="Your Fabian" data-it="Il vostro Fabian">Euer Fabian</p>
         </div>
 
