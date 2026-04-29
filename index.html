@@ -404,6 +404,33 @@
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        /* ─── PHOTO GRID ──────────────────────────────────── */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            max-width: 720px;
+            margin: 28px auto 0;
+            padding: 0 24px;
+        }
+        .photo-cell {
+            overflow: hidden;
+            border-radius: 6px;
+            aspect-ratio: 4/3;
+            border: 1px solid rgba(240,224,196,.1);
+        }
+        .photo-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+        .photo-cell img:hover { transform: scale(1.04); }
+        @media (max-width: 480px) {
+            .photo-grid { gap: 6px; padding: 0 16px; }
+        }
+
         /* ─── PASSWORD MODAL ──────────────────────────────── */
         .password-modal {
             position: fixed;
@@ -1127,7 +1154,17 @@
                data-en="Warm greetings &ndash; see you in September at the latest!"
                data-it="Cari saluti &ndash; a settembre al pi&ugrave; tardi!">Liebe Gr&uuml;sse und bis hoffentlich sp&auml;testens im September!</p>
             <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,7vw,48px);letter-spacing:5px;color:var(--gold);margin-top:6px;"
-               data-de="Euer Fabian" data-en="Your Fabian" data-it="Il vostro Fabian">Euer Fabian</p>
+               data-de="Euer Fabian mit Familie" data-en="Your Fabian &amp; Family" data-it="Il vostro Fabian con famiglia">Euer Fabian mit Familie</p>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="photo-grid">
+            <div class="photo-cell"><img src="photos/foto1.jpg" alt="Fabian in den Bergen" loading="lazy"></div>
+            <div class="photo-cell"><img src="photos/foto2.jpg" alt="Fabian auf dem Rad" loading="lazy"></div>
+            <div class="photo-cell"><img src="photos/foto3.jpg" alt="Fabian nach dem Sport" loading="lazy"></div>
+            <div class="photo-cell"><img src="photos/foto4.jpg" alt="Fabian mit Kind" loading="lazy"></div>
+            <div class="photo-cell"><img src="photos/foto5.jpg" alt="Fabian mit Wunderkerze" loading="lazy"></div>
+            <div class="photo-cell"><img src="photos/foto6.jpg" alt="Fabian mit Familie" loading="lazy"></div>
         </div>
 
         <!-- Countdown -->
