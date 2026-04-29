@@ -403,9 +403,92 @@
             transition: opacity .7s ease, transform .7s ease;
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── PASSWORD MODAL ──────────────────────────────── */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity .3s;
+        }
+        .password-modal.hidden { opacity: 0; pointer-events: none; }
+        .password-modal-content {
+            background: var(--bg-card);
+            border: 2px solid var(--terra);
+            border-radius: 8px;
+            padding: 48px 40px;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+        }
+        .password-modal-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .password-modal-content p {
+            color: var(--cream-dim);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .password-modal input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(212,163,58,.4);
+            border-radius: 4px;
+            background: rgba(240,224,196,.05);
+            color: var(--cream);
+            font-family: 'Barlow', sans-serif;
+            font-size: 15px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        .password-modal input::placeholder { color: var(--cream-dim); }
+        .password-modal input:focus {
+            outline: none;
+            border-color: var(--terra);
+            background: rgba(240,224,196,.08);
+        }
+        .password-modal .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        .password-error {
+            color: var(--pink);
+            font-size: 13px;
+            margin-bottom: 16px;
+            min-height: 16px;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="password-modal">
+        <div class="password-modal-content">
+            <h1 data-de="ZUGANG" data-en="ACCESS" data-it="ACCESSO">ZUGANG</h1>
+            <p data-de="Gib das Passwort ein um die Einladung zu sehen:"
+               data-en="Enter the password to view the invitation:"
+               data-it="Inserisci la password per visualizzare l'invito:">Gib das Passwort ein um die Einladung zu sehen:</p>
+            <div class="password-error" id="passwordError"></div>
+            <input type="password" id="passwordInput"
+                   placeholder="Passwort / Password / Password"
+                   onkeypress="if(event.key==='Enter') checkPassword()">
+            <button class="btn" onclick="checkPassword()"
+                    data-de="ÖFFNEN" data-en="UNLOCK" data-it="SBLOCCARE">ÖFFNEN</button>
+        </div>
+    </div>
 
 <!-- Language Toggle -->
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -1048,6 +1131,45 @@
 
     <script>
         let currentLang = 'de';
+        const CORRECT_PASSWORD = 'Fabifeiert40';
+
+        // Check if user is already authenticated on page load
+        window.addEventListener('load', function() {
+            const isAuthenticated = sessionStorage.getItem('pageAuthenticated') === 'true';
+            if (isAuthenticated) {
+                document.getElementById('passwordModal').classList.add('hidden');
+            }
+            // Initialize language labels in modal
+            updateModalLanguage();
+        });
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorDiv = document.getElementById('passwordError');
+            const password = input.value;
+
+            if (password === CORRECT_PASSWORD) {
+                sessionStorage.setItem('pageAuthenticated', 'true');
+                document.getElementById('passwordModal').classList.add('hidden');
+                input.value = '';
+                errorDiv.textContent = '';
+            } else {
+                errorDiv.textContent = currentLang === 'de' ? 'Passwort falsch!' :
+                                       currentLang === 'en' ? 'Wrong password!' :
+                                       'Password errato!';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        function updateModalLanguage() {
+            document.querySelectorAll('[data-de]').forEach(el => {
+                if (el.closest('#passwordModal')) {
+                    const val = el.getAttribute('data-' + currentLang);
+                    if (val) el.textContent = val;
+                }
+            });
+        }
 
         function setLang(lang) {
             currentLang = lang;
