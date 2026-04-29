@@ -1195,6 +1195,20 @@
             </div>
         </section>
 
+        <!-- Surprise section -->
+        <section class="countdown-section fade-in" style="padding-bottom:40px;">
+            <div class="rule-gold"></div>
+            <p class="html-translate" style="font-family:'Barlow Condensed',sans-serif; font-size:clamp(15px,4vw,19px); color:var(--cream); line-height:1.7; text-align:center; max-width:480px; margin:0 auto;"
+               data-de="Und warum feierst Du am 12.09.?<br>Hast Du nicht am 06.10. Geburtstag?<br><br>Überraschung. <a href='#' onclick='showUltraschall(event)' style='color:var(--gold);text-decoration:underline;'>Darum.</a> &nbsp;:&nbsp;)"
+               data-en="And why are you celebrating on Sep 12?<br>Don't you have your birthday on Oct 6?<br><br>Surprise. <a href='#' onclick='showUltraschall(event)' style='color:var(--gold);text-decoration:underline;'>That's why.</a> &nbsp;:&nbsp;)"
+               data-it="E perché festeggi il 12 settembre?<br>Non hai il compleanno il 6 ottobre?<br><br>Sorpresa. <a href='#' onclick='showUltraschall(event)' style='color:var(--gold);text-decoration:underline;'>Ecco perché.</a> &nbsp;:&nbsp;)">Und warum feierst Du am 12.09.?<br>Hast Du nicht am 06.10. Geburtstag?<br><br>Überraschung. <a href='#' onclick='showUltraschall(event)' style='color:var(--gold);text-decoration:underline;'>Darum.</a> &nbsp;:&nbsp;)</p>
+        </section>
+
+        <!-- Ultrasound lightbox -->
+        <div id="ultraschallModal" onclick="hideUltraschall()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9000;align-items:center;justify-content:center;cursor:pointer;">
+            <img src="photos/ultraschall.jpg" alt="Ultraschall" style="max-width:90vw;max-height:88vh;border-radius:10px;box-shadow:0 0 40px rgba(255,215,0,.35);">
+        </div>
+
     </div>
 
     <!-- Background Music -->
@@ -1263,7 +1277,13 @@
             });
             document.querySelectorAll('[data-de]').forEach(el => {
                 const val = el.getAttribute('data-' + lang);
-                if (val) el.textContent = val;
+                if (val) {
+                    if (el.classList.contains('html-translate')) {
+                        el.innerHTML = val;
+                    } else {
+                        el.textContent = val;
+                    }
+                }
             });
             const titles = {
                 de: "Fabian's 40. Geburtstag",
@@ -1278,6 +1298,15 @@
             const isOpen = content.classList.contains('open');
             content.classList.toggle('open');
             btn.setAttribute('aria-expanded', !isOpen);
+        }
+
+        function showUltraschall(e) {
+            e.preventDefault();
+            const m = document.getElementById('ultraschallModal');
+            m.style.display = 'flex';
+        }
+        function hideUltraschall() {
+            document.getElementById('ultraschallModal').style.display = 'none';
         }
 
         function updateCountdown() {
