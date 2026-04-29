@@ -470,6 +470,31 @@
             margin-bottom: 16px;
             min-height: 16px;
         }
+        .modal-lang-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: 28px;
+            background: rgba(240,224,196,.07);
+            border: 1px solid rgba(240,224,196,.15);
+            border-radius: 6px;
+            padding: 3px;
+        }
+        .modal-lang-btn {
+            padding: 5px 14px;
+            border: none;
+            border-radius: 4px;
+            background: transparent;
+            color: var(--cream-dim);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .modal-lang-btn.active { background: var(--terra); color: var(--cream); }
+        .modal-lang-btn:hover:not(.active) { color: var(--cream); }
     </style>
 </head>
 <body>
@@ -477,6 +502,11 @@
     <!-- Password Modal -->
     <div id="passwordModal" class="password-modal">
         <div class="password-modal-content">
+            <div class="modal-lang-toggle">
+                <button class="modal-lang-btn active" onclick="setLang('de')">DE</button>
+                <button class="modal-lang-btn" onclick="setLang('en')">EN</button>
+                <button class="modal-lang-btn" onclick="setLang('it')">IT</button>
+            </div>
             <h1 data-de="ZUGANG" data-en="ACCESS" data-it="ACCESSO">ZUGANG</h1>
             <p data-de="Gib das Passwort ein um die Einladung zu sehen:"
                data-en="Enter the password to view the invitation:"
@@ -485,7 +515,7 @@
             <input type="password" id="passwordInput"
                    placeholder="Passwort / Password / Password"
                    onkeypress="if(event.key==='Enter') checkPassword()">
-            <button class="btn" onclick="checkPassword()"
+            <button class="btn" id="unlockBtn" onclick="checkPassword()"
                     data-de="ÖFFNEN" data-en="UNLOCK" data-it="SBLOCCARE">ÖFFNEN</button>
         </div>
     </div>
@@ -1176,6 +1206,12 @@
             document.documentElement.lang = lang;
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            // Sync modal language buttons
+            const modalBtns = document.querySelectorAll('.modal-lang-btn');
+            const langs = ['de', 'en', 'it'];
+            modalBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', langs[i] === lang);
             });
             document.querySelectorAll('[data-de]').forEach(el => {
                 const val = el.getAttribute('data-' + lang);
