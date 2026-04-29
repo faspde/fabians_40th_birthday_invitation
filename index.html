@@ -1166,7 +1166,9 @@
             <div class="photo-cell"><img src="photos/foto6.jpg" alt="Bananen-Weizen" loading="lazy"></div>
             <div class="photo-cell"><img src="photos/foto7.jpg" alt="Fabian mit Wunderkerze" loading="lazy"></div>
             <div class="photo-cell"><img src="photos/foto8.jpg" alt="Fabian mit Familie" loading="lazy"></div>
-            <div class="photo-cell"><img src="photos/foto9.jpg" alt="Fabian mit Kind am Spielplatz" loading="lazy"></div>
+        </div>
+        <div style="max-width:360px;margin:8px auto 0;padding:0 24px;">
+            <div class="photo-cell" style="margin-bottom:0;"><img src="photos/foto9.jpg" alt="Fabian mit Kind am Spielplatz" loading="lazy"></div>
         </div>
 
         <!-- Countdown -->
@@ -1205,7 +1207,7 @@
 
         <!-- Ultrasound lightbox -->
         <div id="ultraschallModal" onclick="hideUltraschall()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9000;align-items:center;justify-content:center;cursor:pointer;">
-            <img src="photos/ultraschall.jpg" alt="Ultraschall" style="max-width:90vw;max-height:88vh;border-radius:10px;box-shadow:0 0 40px rgba(255,215,0,.35);">
+            <img id="ultraschallImg" src="photos/ultraschall.jpg?v=2" alt="Ultraschall" onclick="event.stopPropagation();" style="max-width:90vw;max-height:88vh;border-radius:10px;box-shadow:0 0 40px rgba(255,215,0,.35);">
         </div>
 
     </div>
