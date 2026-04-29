@@ -1183,6 +1183,7 @@
                 document.getElementById('passwordModal').classList.add('hidden');
                 input.value = '';
                 errorDiv.textContent = '';
+                enableMusicAutoStart();
             } else {
                 errorDiv.textContent = currentLang === 'de' ? 'Passwort falsch!' :
                                        currentLang === 'en' ? 'Wrong password!' :
@@ -1281,7 +1282,7 @@
             }
         }
 
-        // Auto-start on first interaction anywhere on the page
+        // Auto-start on first interaction – only after modal is dismissed
         function autoStart() {
             if (!musicStarted) {
                 musicStarted = true;
@@ -1294,8 +1295,16 @@
             document.removeEventListener('click', autoStart);
             document.removeEventListener('touchstart', autoStart);
         }
-        document.addEventListener('click', autoStart);
-        document.addEventListener('touchstart', autoStart);
+
+        function enableMusicAutoStart() {
+            document.addEventListener('click', autoStart);
+            document.addEventListener('touchstart', autoStart);
+        }
+
+        // If already authenticated (session), start listener immediately
+        if (sessionStorage.getItem('pageAuthenticated') === 'true') {
+            enableMusicAutoStart();
+        }
     </script>
 </body>
 </html>
