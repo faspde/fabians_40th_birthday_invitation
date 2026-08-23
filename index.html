@@ -627,7 +627,7 @@
                    data-de="Samstag"
                    data-en="Saturday"
                    data-it="Sabato">Samstag</p>
-                <p class="hero-time" style="margin-top:6px;" data-de="Ab 17:00 Uhr" data-en="From 5:00 PM" data-it="Dalle ore 17:00">Ab 17:00 Uhr</p>
+                <p class="hero-time" style="margin-top:6px;" data-de="Ab 15:00 Uhr" data-en="From 3:00 PM" data-it="Dalle ore 15:00">Ab 15:00 Uhr</p>
                 <p style="font-size:13px;color:rgba(240,224,196,.38);font-style:italic;margin-top:4px;"
                    data-de="(tats&auml;chlich: 40 Jahre minus 24 Tage)"
                    data-en="(actually: 40 years minus 24 days)"
@@ -702,6 +702,18 @@
                             <span data-de="Bock zum Singen? Wir bereiten dir die B&uuml;hne."
                                   data-en="Feel like singing? We'll set the stage for you."
                                   data-it="Voglia di cantare? Prepariamo il palco per te.">Bock zum Singen? Wir bereiten dir die B&uuml;hne.</span>
+                        </li>
+                        <li>
+                            <strong data-de="Ablauf" data-en="Schedule" data-it="Programma">Ablauf</strong><br>
+                            <span data-de="15:00 Uhr Beginn (kein Kaffee und Kuchen; daf&uuml;r Daydrinking f&uuml;r alle Interessierten)"
+                                  data-en="3:00 PM start (no coffee &amp; cake; day drinking for anyone interested instead)"
+                                  data-it="Ore 15:00 inizio (niente caff&egrave; e torta; in compenso daydrinking per tutti gli interessati)">15:00 Uhr Beginn (kein Kaffee und Kuchen; daf&uuml;r Daydrinking f&uuml;r alle Interessierten)</span><br>
+                            <span data-de="Ab ca. 17:30 Uhr Antipasti"
+                                  data-en="From approx. 5:30 PM antipasti"
+                                  data-it="Dalle ore 17:30 circa antipasti">Ab ca. 17:30 Uhr Antipasti</span><br>
+                            <span data-de="Buffet ab ca. 18:30 Uhr"
+                                  data-en="Buffet from approx. 6:30 PM"
+                                  data-it="Buffet dalle ore 18:30 circa">Buffet ab ca. 18:30 Uhr</span>
                         </li>
                     </ul>
                 </div>
@@ -1311,7 +1323,7 @@
         }
 
         function updateCountdown() {
-            const partyDate = new Date('2026-09-12T17:00:00+02:00');
+            const partyDate = new Date('2026-09-12T15:00:00+02:00');
             const now = new Date();
             const diff = partyDate - now;
             if (diff <= 0) {

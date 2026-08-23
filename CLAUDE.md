@@ -8,7 +8,7 @@ Homescreen: Einladungskarte - Einladung zu Fabian`s 40. Geburtstag
 
 40.(-24 Tage)-Geburtstag
 
-Ab 17:00 Uhr
+Ab 15:00 Uhr
 
 Dann folgen Links zur Örtlichkeit:
 Musikerheim Kirchehrenbach
